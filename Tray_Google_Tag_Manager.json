@@ -1,0 +1,987 @@
+/*Depois que subir, altere a conversãoAW o rotulo de conversão e codigo de conversão*/
+{
+    "exportFormatVersion": 2,
+    "exportTime": "2022-07-03 18:25:36",
+    "containerVersion": {
+        "path": "accounts/6006846267/containers/66926817/versions/0",
+        "accountId": "6006846267",
+        "containerId": "66926817",
+        "containerVersionId": "0",
+        "container": {
+            "path": "accounts/6006846267/containers/66926817",
+            "accountId": "6006846267",
+            "containerId": "66926817",
+            "name": "thadeuias.com.br",
+            "publicId": "GTM-WCM9F93",
+            "usageContext": [
+                "WEB"
+            ],
+            "fingerprint": "1653589796020",
+            "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6006846267/containers/66926817/workspaces?apiLink=container"
+        },
+        "tag": [
+            {
+                "accountId": "6006846267",
+                "containerId": "66926817",
+                "tagId": "4",
+                "name": "Vinculador de conversões",
+                "type": "gclidw",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "enableCrossDomain",
+                        "value": "false"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "enableCookieOverrides",
+                        "value": "false"
+                    }
+                ],
+                "fingerprint": "1653589937315",
+                "firingTriggerId": [
+                    "2147479553"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "6006846267",
+                "containerId": "66926817",
+                "tagId": "13",
+                "name": "Acompanhamento de conversões do Google Ads",
+                "type": "awct",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "enableNewCustomerReporting",
+                        "value": "false"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "enableConversionLinker",
+                        "value": "true"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "orderId",
+                        "value": "{{OrderID}}"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "enableProductReporting",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "conversionValue",
+                        "value": "{{transactionTotal}}"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "enableEnhancedConversion",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "conversionCookiePrefix",
+                        "value": "_gcl"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "enableShippingData",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "conversionId",
+                        "value": "{{CodigodeConversao}}"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "currencyCode",
+                        "value": "BRL"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "conversionLabel",
+                        "value": "{{RotulodeConversoes}}"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "rdp",
+                        "value": "false"
+                    }
+                ],
+                "fingerprint": "1653589937318",
+                "firingTriggerId": [
+                    "12"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "6006846267",
+                "containerId": "66926817",
+                "tagId": "16",
+                "name": "Remarketing do Google Ads",
+                "type": "sp",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "enableDynamicRemarketing",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "dataLayerVariable",
+                        "value": "{{google_tag_params}}"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "conversionId",
+                        "value": "{{CodigodeConversao}}"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "customParamsFormat",
+                        "value": "DATA_LAYER"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "conversionLabel",
+                        "value": "{{RotulodeConversoes}}"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "rdp",
+                        "value": "false"
+                    }
+                ],
+                "fingerprint": "1656674183988",
+                "firingTriggerId": [
+                    "14"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "6006846267",
+                "containerId": "66926817",
+                "tagId": "18",
+                "name": "Google Avaliações - Variáveis",
+                "type": "html",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "html",
+                        "value": "<script>\nvar OrderData = {{OrderData}};\nvar products = OrderData.products;\nvar productsGtins = [];\nfor (product in products) {\nproductsGtins.push({\"gtin\":products[product].ean});\n};\ndataLayer.push({\n'event': 'productsGtins',\n'productsGtins': productsGtins\n});\n</script>"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "supportDocumentWrite",
+                        "value": "false"
+                    }
+                ],
+                "fingerprint": "1653589937324",
+                "firingTriggerId": [
+                    "12",
+                    "17"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "6006846267",
+                "containerId": "66926817",
+                "tagId": "26",
+                "name": "userId Remarketing",
+                "type": "html",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "html",
+                        "value": "<script>\n gtag('event', 'page_view', {\n 'send_to': '{{codigoAW}}',\n 'local_pagetype': 'conversionintent',\n 'local_totalvalue': {{transactionTotal}} || {{checkoutTotal}},\n 'user_id': {{userId}}\n });\n</script>"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "supportDocumentWrite",
+                        "value": "false"
+                    }
+                ],
+                "fingerprint": "1656872686281",
+                "firingTriggerId": [
+                    "23",
+                    "12"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "6006846267",
+                "containerId": "66926817",
+                "tagId": "29",
+                "name": "Remarketing do Google Ads - Variáveis Checkout",
+                "type": "html",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "html",
+                        "value": "<script>\n var OrderData = {{OrderData}};(function() { try {\n var totalvalue = OrderData.actionField.revenue;\n var products = OrderData.products;\n if ((products.length - 1) == 0) {\n var prodid = products[0]['id'];\n prodid = JSON.parse(prodid);\n } else {var prodid = '[';\n for (var i = 0; i <= products.length - 1; i++) {\n prodid += products[i]['id'];\n if (i !== products.length - 1) {\n prodid += ',';}};\n prodid += ']';\n prodid = JSON.parse(prodid);}\n dataLayer.push({\n 'event': 'fireRemarketingTag',\n 'google_tag_params': {\n 'ecomm_prodid': prodid,\n 'ecomm_pagetype': 'purchase',\n 'ecomm_totalvalue': totalvalue } });\n } catch (err) {}\n })();\n</script>"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "supportDocumentWrite",
+                        "value": "false"
+                    }
+                ],
+                "fingerprint": "1653589937325",
+                "firingTriggerId": [
+                    "12"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "6006846267",
+                "containerId": "66926817",
+                "tagId": "33",
+                "name": "GoogleAvaliacao",
+                "type": "html",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "html",
+                        "value": "<!-- BEGIN GCR Opt-in Module Code -->\n\n<script src=\"https://apis.google.com/js/platform.js?onload=renderOptIn\"\n\nasync defer>\n\n</script>\n\n\n<script>\nvar id_pedido = {{IdPedido}};\nvar email = {{email}};\nvar prazo_entrega = {{prazoEntrega}};\nvar gtin = {{productsGtins}};\n\nwindow.renderOptIn = function() {\n\nwindow.gapi.load('surveyoptin', function() {\n\nwindow.gapi.surveyoptin.render(\n\n{\n\n\"merchant_id\": 435764908,\n\n\"order_id\": id_pedido,\n\n\"email\": email,\n\n\"delivery_country\": \"BR\",\n\n\"estimated_delivery_date\": prazo_entrega,\n\n\"products\": gtin,\n\n\"opt_in_style\": \"BOTTOM_TRAY\"\n\n});\n\n});\n\n}\n\n</script>\n\n<!-- END GCR Opt-in Module Code -->\n\n<!-- BEGIN GCR Language Code -->\n\n<script>\n\nwindow.___gcfg = {\n\nlang: 'pt-BR'\n\n};\n\n</script>\n\n<!-- END GCR Language Code -->"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "supportDocumentWrite",
+                        "value": "false"
+                    }
+                ],
+                "fingerprint": "1653589937325",
+                "firingTriggerId": [
+                    "17",
+                    "12"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "6006846267",
+                "containerId": "66926817",
+                "tagId": "35",
+                "name": "Remarketing do Google Ads - Variáveis",
+                "type": "html",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "html",
+                        "value": "<script> var pagina = {{pageCategory}};(function() { try {if (pagina == 'Produto') { var prodid={{idProduct}}, totalvalue={{priceSell}}; prodid = JSON.parse(prodid); dataLayer.push({ 'event': 'fireRemarketingTag', 'google_tag_params': { 'ecomm_prodid': prodid, 'ecomm_pagetype': 'product', 'ecomm_totalvalue': totalvalue}}); } else if ( pagina == 'Carrinho' ) { var products = dataLayer.map(function (elem) { return elem['ecommerce']; }).filter(function (valor) { valor != \"undefined\"; return valor; }).slice(-1)[0].checkout.products; var totalvalue = 0; if ((products.length - 1) == 0) { var prodid = products[0]['id']; prodid = JSON.parse(prodid); } else {var prodid = '['; for (var i = 0; i <= products.length - 1; i++) { prodid += products[i]['id']; totalvalue += products[i]['price'] * products[i]['quantity']; if (i !== products.length - 1) { prodid += ',';}}; prodid += ']'; prodid = JSON.parse(prodid);} dataLayer.push({ 'event': 'fireRemarketingTag', 'google_tag_params': { 'ecomm_prodid': prodid, 'ecomm_pagetype': 'cart', 'ecomm_totalvalue': totalvalue}}); } else if ( pagina == 'Busca' ) { var products = dataLayer[0][\"listProducts\"]; if ((products.length - 1) == 0) { var prodid = products[0]['idProduct']; prodid = JSON.parse(prodid); } else {var prodid = '['; for (var i = 0; i <= products.length - 1; i++) { prodid += products[i]['idProduct']; if (i !== products.length - 1) { prodid += ',';}}; prodid += ']'; prodid = JSON.parse(prodid);} dataLayer.push({ 'event': 'fireRemarketingTag', 'google_tag_params': { 'ecomm_prodid': prodid, 'ecomm_pagetype': 'search'}}); } else if ( pagina == 'catalogo' ) { var products = dataLayer[0][\"listProducts\"]; if ((products.length - 1) == 0) { var prodid = products[0]['idProduct']; prodid = JSON.parse(prodid); } else {var prodid = '['; for (var i = 0; i <= products.length - 1; i++) { prodid += products[i]['idProduct']; if (i !== products.length - 1) { prodid += ',';}}; prodid += ']'; prodid = JSON.parse(prodid);} dataLayer.push({ 'event': 'fireRemarketingTag', 'google_tag_params': { 'ecomm_prodid': prodid, 'ecomm_pagetype': 'catalog'}}); } else { dataLayer.push({ 'event': 'fireRemarketingTag', 'google_tag_params': { 'ecomm_pagetype': pagina }});}} catch (err) {}})();</script>"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "supportDocumentWrite",
+                        "value": "false"
+                    }
+                ],
+                "fingerprint": "1656672894624",
+                "firingTriggerId": [
+                    "28",
+                    "31"
+                ],
+                "blockingTriggerId": [
+                    "12"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "6006846267",
+                "containerId": "66926817",
+                "tagId": "36",
+                "name": "Código de Acompanhamento Google Ads",
+                "type": "html",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "html",
+                        "value": "<!-- Global site tag (gtag.js) -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id={{codigoAW}}\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', '{{codigoAW}}');\n</script>\n<script>\n  gtag('event', 'page_view', {\n    'send_to': '{{codigoAW}}',\n    'ecomm_pagetype': '{{pageCategory}}',\n    'ecomm_prodid': '{{idProduct}}',\n    'currency': 'replace with value'\n  });\n</script>\n"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "supportDocumentWrite",
+                        "value": "false"
+                    }
+                ],
+                "fingerprint": "1656872496875",
+                "firingTriggerId": [
+                    "2147479553"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            }
+        ],
+        "trigger": [
+            {
+                "accountId": "6006846267",
+                "containerId": "66926817",
+                "triggerId": "12",
+                "name": "EasyCheckout_OrderPlaced",
+                "type": "CUSTOM_EVENT",
+                "customEventFilter": [
+                    {
+                        "type": "EQUALS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{_event}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "purchase"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1653589937318"
+            },
+            {
+                "accountId": "6006846267",
+                "containerId": "66926817",
+                "triggerId": "14",
+                "name": "fireRemarketingTag",
+                "type": "CUSTOM_EVENT",
+                "customEventFilter": [
+                    {
+                        "type": "EQUALS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{_event}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "fireRemarketingTag"
+                            }
+                        ]
+                    }
+                ],
+                "filter": [
+                    {
+                        "type": "EQUALS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{Event}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "fireRemarketingTag"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1653589937318"
+            },
+            {
+                "accountId": "6006846267",
+                "containerId": "66926817",
+                "triggerId": "17",
+                "name": "DOM",
+                "type": "DOM_READY",
+                "fingerprint": "1653589937319"
+            },
+            {
+                "accountId": "6006846267",
+                "containerId": "66926817",
+                "triggerId": "20",
+                "name": "EasyCheckout_ProductsGtins",
+                "type": "CUSTOM_EVENT",
+                "customEventFilter": [
+                    {
+                        "type": "EQUALS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{_event}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "productsGtins"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1653589937320"
+            },
+            {
+                "accountId": "6006846267",
+                "containerId": "66926817",
+                "triggerId": "23",
+                "name": "EasyCheckout_Confirmation",
+                "type": "CUSTOM_EVENT",
+                "customEventFilter": [
+                    {
+                        "type": "EQUALS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{_event}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "EasyCheckout_Confirmation"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1653589937321"
+            },
+            {
+                "accountId": "6006846267",
+                "containerId": "66926817",
+                "triggerId": "28",
+                "name": "DOM pronto",
+                "type": "PAGEVIEW",
+                "fingerprint": "1653589937322"
+            },
+            {
+                "accountId": "6006846267",
+                "containerId": "66926817",
+                "triggerId": "31",
+                "name": "cart",
+                "type": "CUSTOM_EVENT",
+                "customEventFilter": [
+                    {
+                        "type": "EQUALS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{_event}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "cart"
+                            }
+                        ]
+                    }
+                ],
+                "filter": [
+                    {
+                        "type": "EQUALS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{Event}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "cart"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1653589937323"
+            }
+        ],
+        "variable": [
+            {
+                "accountId": "6006846267",
+                "containerId": "66926817",
+                "variableId": "3",
+                "name": "OrderData",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "ecommerce.purchase"
+                    }
+                ],
+                "fingerprint": "1653589937315",
+                "formatValue": {}
+            },
+            {
+                "accountId": "6006846267",
+                "containerId": "66926817",
+                "variableId": "5",
+                "name": "email",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "email"
+                    }
+                ],
+                "fingerprint": "1653589937316",
+                "formatValue": {}
+            },
+            {
+                "accountId": "6006846267",
+                "containerId": "66926817",
+                "variableId": "6",
+                "name": "RotulodeConversoes",
+                "type": "c",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "value",
+                        "value": "hY3wCO7Ug8EDELubib0C"
+                    }
+                ],
+                "fingerprint": "1653590349811",
+                "formatValue": {}
+            },
+            {
+                "accountId": "6006846267",
+                "containerId": "66926817",
+                "variableId": "7",
+                "name": "deadline",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "ecommerce.purchase.actionField.deadline"
+                    }
+                ],
+                "fingerprint": "1653589937316",
+                "formatValue": {}
+            },
+            {
+                "accountId": "6006846267",
+                "containerId": "66926817",
+                "variableId": "8",
+                "name": "prazoEntrega",
+                "type": "jsm",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "javascript",
+                        "value": "function() {\n\nvar today = new Date();\n\nvar aux = new Date(today);\n\naux.setDate(aux.getDate() + {{deadline}});\n\nvar estimated = new Date(aux);\n\nvar estimatedMonth = estimated.getMonth() + 1;\n\nvar estimatedDay = estimated.getDate();\n\nreturn estimated.getFullYear() + '-' +\n\n        (estimatedMonth < 10 ? '0' + estimatedMonth : estimatedMonth) + '-' +\n\n        (estimatedDay < 10 ? '0' + estimatedDay : estimatedDay)\n\n}"
+                    }
+                ],
+                "fingerprint": "1653589937324",
+                "formatValue": {}
+            },
+            {
+                "accountId": "6006846267",
+                "containerId": "66926817",
+                "variableId": "9",
+                "name": "CodigodeConversao",
+                "type": "c",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "value",
+                        "value": "664948155"
+                    }
+                ],
+                "fingerprint": "1653590306246",
+                "formatValue": {}
+            },
+            {
+                "accountId": "6006846267",
+                "containerId": "66926817",
+                "variableId": "10",
+                "name": "OrderID",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "ecommerce.purchase.actionField.id"
+                    }
+                ],
+                "fingerprint": "1653589937317",
+                "formatValue": {}
+            },
+            {
+                "accountId": "6006846267",
+                "containerId": "66926817",
+                "variableId": "11",
+                "name": "transactionTotal",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "ecommerce.purchase.actionField.revenue"
+                    }
+                ],
+                "fingerprint": "1653589937317",
+                "formatValue": {}
+            },
+            {
+                "accountId": "6006846267",
+                "containerId": "66926817",
+                "variableId": "15",
+                "name": "google_tag_params",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "google_tag_params"
+                    }
+                ],
+                "fingerprint": "1653589937319",
+                "formatValue": {}
+            },
+            {
+                "accountId": "6006846267",
+                "containerId": "66926817",
+                "variableId": "19",
+                "name": "productsGtins",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "productsGtins"
+                    }
+                ],
+                "fingerprint": "1653589937320",
+                "formatValue": {}
+            },
+            {
+                "accountId": "6006846267",
+                "containerId": "66926817",
+                "variableId": "21",
+                "name": "idProduct",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "idProduct"
+                    }
+                ],
+                "fingerprint": "1653589937320",
+                "formatValue": {}
+            },
+            {
+                "accountId": "6006846267",
+                "containerId": "66926817",
+                "variableId": "24",
+                "name": "checkoutTotal",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "checkoutTotal"
+                    }
+                ],
+                "fingerprint": "1653589937321",
+                "formatValue": {}
+            },
+            {
+                "accountId": "6006846267",
+                "containerId": "66926817",
+                "variableId": "25",
+                "name": "userId",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "userId"
+                    }
+                ],
+                "fingerprint": "1653589937321",
+                "formatValue": {}
+            },
+            {
+                "accountId": "6006846267",
+                "containerId": "66926817",
+                "variableId": "27",
+                "name": "priceSell",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "priceSell"
+                    }
+                ],
+                "fingerprint": "1653589937322",
+                "formatValue": {}
+            },
+            {
+                "accountId": "6006846267",
+                "containerId": "66926817",
+                "variableId": "30",
+                "name": "pageCategory",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "pageCategory"
+                    }
+                ],
+                "fingerprint": "1653589937323",
+                "formatValue": {}
+            },
+            {
+                "accountId": "6006846267",
+                "containerId": "66926817",
+                "variableId": "32",
+                "name": "IdPedido",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "ecommerce.purchase.actionField.id"
+                    }
+                ],
+                "fingerprint": "1653589937323",
+                "formatValue": {}
+            },
+            {
+                "accountId": "6006846267",
+                "containerId": "66926817",
+                "variableId": "37",
+                "name": "codigoAW",
+                "type": "c",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "value",
+                        "value": "AW-999999"
+                    }
+                ],
+                "fingerprint": "1656872390213",
+                "formatValue": {}
+            }
+        ],
+        "builtInVariable": [
+            {
+                "accountId": "6006846267",
+                "containerId": "66926817",
+                "type": "PAGE_URL",
+                "name": "Page URL"
+            },
+            {
+                "accountId": "6006846267",
+                "containerId": "66926817",
+                "type": "PAGE_HOSTNAME",
+                "name": "Page Hostname"
+            },
+            {
+                "accountId": "6006846267",
+                "containerId": "66926817",
+                "type": "PAGE_PATH",
+                "name": "Page Path"
+            },
+            {
+                "accountId": "6006846267",
+                "containerId": "66926817",
+                "type": "REFERRER",
+                "name": "Referrer"
+            },
+            {
+                "accountId": "6006846267",
+                "containerId": "66926817",
+                "type": "EVENT",
+                "name": "Event"
+            }
+        ],
+        "fingerprint": "1656872736046",
+        "tagManagerUrl": "https://tagmanager.google.com/#/versions/accounts/6006846267/containers/66926817/versions/0?apiLink=version"
+    }
+}

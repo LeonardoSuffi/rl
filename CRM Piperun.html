@@ -1,0 +1,77 @@
+<form id="leo">
+  <input type="text" name="nome" size="35" class="Nome" id="Nome" placeholder="Seu Nome" required/>
+  <input type="text" name="whatsapp" class="Whatsapp" id="Whatsapp" placeholder="Tel:(00) 90000-0000" required/>
+  <input type="email" name="email" size="35" class="Email" id="Email" placeholder="E-mail" required/>
+  <button type="submit" data-loading-text="Carregando...">
+    Receber Proposta
+  </button>
+</form>
+<script>
+  function getParameterByName(name) {
+  name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+  let regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+    results = regex.exec(location.search);
+  return results === null
+    ? ""
+    : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+  document.querySelector('#leo').addEventListener('submit', function() {
+    event.preventDefault();
+  let endpointHash =
+    "https://app.pipe.run/webservice/integradorJson?hash=5782564b-1ff6-4997-81ea-fca21f332bdd";
+  let name = document.querySelector(".Nome").value;
+  let email = document.querySelector(".Email").value;
+  let phone = document.querySelector(".Whatsapp").value;
+  let utm_source = getParameterByName("utm_source");
+  let utm_campaign = getParameterByName("utm_campaign");
+
+  function configPost(method, body) {
+    return {
+      method: method,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    };
+  }
+
+  let rules = {
+    update: true,
+    filter_status_update: "open",
+    status: "open",
+  };
+
+  let lead = [
+    {
+      id: email,
+      title: name.toUpperCase(),
+      mobile_phone: phone,
+      name: name,
+      email: email,
+      last_conversion: {
+        source: "Americana",
+      },
+      custom_fields: {
+          url_conversao: location.href,
+          utm_source: utm_source,
+          utm_campaign: utm_campaign,
+      },
+    },
+  ];
+
+    let dataToSend = {
+      rules: rules,
+      leads: lead,
+    };
+      fetch(endpointHash, configPost("POST", dataToSend)).then((data) => {
+        window.location.assign("");
+      });
+  });
+  </script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.js"></script>
+<script>
+$(document).ready(function () {
+  $(".Whatsapp1").mask("(00) 00000-0000");
+});
+</script>

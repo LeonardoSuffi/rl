@@ -1,0 +1,56 @@
+<p>Agência de <span style="color:#61FEFB">Marketing Digital</span> referência em <span  id="frase"></span><span id="cursor"></span></p>
+<STYle>
+        #cursor {
+      display: inline-block;
+      width: 8px;
+      height: 20px;
+      background-color: #000;
+      animation: blink 0.7s infinite;
+    }
+</STYle>
+
+
+  <script>
+    // Array de frases para alternar
+    const frases = [
+    "RESULTADO.",
+      "POSICIONAMENTO.",
+      "INDEXAÇÃO.",
+      "OTIMIZAÇÃO.",
+      "SEO."
+    ];
+
+    const spanFrase = document.getElementById("frase");
+    const spanCursor = document.getElementById("cursor");
+    let index = 0;
+    let fraseAtual = "";
+    let letraAtual = 0;
+
+    // Função para simular digitação da frase
+    function digitarFrase() {
+      if (letraAtual < frases[index].length) {
+        fraseAtual += frases[index][letraAtual];
+        spanFrase.textContent = fraseAtual;
+        letraAtual++;
+        setTimeout(digitarFrase, 100); // Tempo entre as letras (ajuste conforme desejado)
+      } else {
+        setTimeout(apagarFrase, 1000); // Tempo para manter a frase completa (ajuste conforme desejado)
+      }
+    }
+
+    // Função para apagar a frase
+    function apagarFrase() {
+      if (fraseAtual.length > 0) {
+        fraseAtual = fraseAtual.slice(0, -1);
+        spanFrase.textContent = fraseAtual;
+        setTimeout(apagarFrase, 50); // Tempo entre as letras (ajuste conforme desejado)
+      } else {
+        index = (index + 1) % frases.length;
+        letraAtual = 0;
+        setTimeout(digitarFrase, 500); // Tempo antes de começar a digitar a próxima frase (ajuste conforme desejado)
+      }
+    }
+
+    // Inicializar a animação
+    digitarFrase();
+  </script>

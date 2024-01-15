@@ -1,0 +1,69 @@
+<input type="tel" oninput="this.value = this.value.replace(/\D/g, '').replace(/^(\d{2})(\d{5})(\d{4}).*/, '($1) $2-$3');">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.js"></script>
+<script>
+  $(document).ready(function () {
+    $(".leodev-tel").mask("(00) 00000-0000");
+  });
+</script>
+        
+
+
+        <script>
+          document.querySelector(".cnpj").addEventListener("input", function (e) {
+            var x = e.target.value
+              .replace(/\D/g, "")
+              .match(/(\d{0,2})(\d{0,3})(\d{0,3})(\d{0,4})(\d{0,2})/);
+            e.target.value = !x[2]
+              ? x[1]
+              : x[1] +
+                "." +
+                x[2] +
+                "." +
+                x[3] +
+                "/" +
+                x[4] +
+                (x[5] ? "-" + x[5] : "");
+          });
+        </script>
+
+
+
+
+<input type="text" name="valor" placeholder="Valor mensal da conta de luz" id="valor21" />
+<script>
+  function formatarMoeda(valor) {
+    // Remove tudo o que não é dígito
+    valor = valor.replace(/\D/g, "");
+    
+    // Divide por 100 para obter o valor em reais com centavos
+    valor = (valor / 100).toFixed(2);
+    
+    // Substitui o ponto por vírgula
+    valor = valor.replace(".", ",");
+    
+    // Formata o valor como texto com o símbolo R$
+    valor = "R$ " + valor.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    
+    // Define o valor formatado como o valor do input
+    document.getElementById("valor21").value = valor;
+  }
+  
+  document.getElementById("valor21").addEventListener("input", function() {
+    formatarMoeda(this.value);
+  });
+  </script>
+
+<script>
+	function copiarPalavra(palavra) {
+	const elementoTemporario = document.createElement('textarea');
+	elementoTemporario.value = palavra;
+	document.body.appendChild(elementoTemporario);
+	elementoTemporario.select();
+	document.execCommand('copy');
+	document.body.removeChild(elementoTemporario);
+  }
+</script>
+
+<button onclick="copiarPalavra('Copia aqui')">Copiar Palavra</button>

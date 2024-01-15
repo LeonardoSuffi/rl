@@ -1,0 +1,159 @@
+<div id="exit-popup" class="popup">
+    <div class="popup-content">
+        <span class="popup-close" onclick="closeExitPopup()">&times;</span>
+        <h2>Antes de sair...</h2>
+        <p style="font-size: 15px;">Quer ficar por dentro das nossas melhores promoções e ofertas exclusivas?</p>
+        <p>Deixe seu endereço de e-mail e nós entraremos em contato com você!</p>
+        <form id="exit-popup-form" action="z.php" method="post">
+            <input type="email" id="leo1" placeholder="Seu endereço de e-mail"><br>
+            <button type="submit" id="leo2">Receber Ofertas</button>
+        </form>
+    </div>
+</div>
+
+<style>
+/* Estilo para o fundo do pop-up */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+}
+
+/* Estilo para o conteúdo do pop-up */
+.popup-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    width: 600px; /* Ajuste o tamanho conforme necessário */
+}
+
+/* Estilo para o botão de fechar */
+.popup-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+/* Estilo para o título do pop-up */
+.popup-content h2 {
+    font-size: 30px;
+    color: #d3195a;
+    font-family: Montserrat, sans-serif;
+    margin-bottom: 10px;
+}
+
+/* Estilo para o texto do pop-up */
+.popup-content p {
+    font-size: 20px;
+    font-family: Montserrat, sans-serif;
+    margin-bottom: 20px;
+}
+
+/* Estilo para o campo de e-mail */
+#leo1 {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+/* Estilo para o botão de envio */
+#leo2 {
+    background-color: #d3195a;
+    color: #fff;
+    width: 100%;
+    padding: 10px 20px;
+    font-family: Montserrat, sans-serif;
+    font-size: 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Estilo para o botão de envio quando o mouse passa por cima */
+#leo2:hover {
+    background-color: #9e0138;
+}
+
+
+</style>
+<script>
+    // Função para exibir o pop-up de intenção de saída
+    function showExitPopup() {
+        var popup = document.getElementById("exit-popup");
+        popup.style.display = "block";
+    }
+
+    // Função para fechar o pop-up
+    function closeExitPopup() {
+        var popup = document.getElementById("exit-popup");
+        popup.style.display = "none";
+        // Definir um cookie indicando que o pop-up foi fechado
+        setExitPopupClosedCookie();
+    }
+
+    // Função para verificar se o cookie de pop-up já foi exibido
+    function hasExitPopupCookie() {
+        return document.cookie.indexOf("exitPopupShown=true") !== -1;
+    }
+
+    // Função para definir um cookie que rastreia que o pop-up foi exibido
+    function setExitPopupCookie() {
+        var expirationDate = new Date();
+        expirationDate.setFullYear(expirationDate.getFullYear() + 1); // Cookie válido por 1 ano
+        document.cookie = "exitPopupShown=true; expires=" + expirationDate.toUTCString() + "; path=/";
+    }
+
+    // Função para definir um cookie que rastreia que o pop-up foi fechado
+    function setExitPopupClosedCookie() {
+        var expirationDate = new Date();
+        expirationDate.setFullYear(expirationDate.getFullYear() + 1); // Cookie válido por 1 ano
+        document.cookie = "exitPopupClosed=true; expires=" + expirationDate.toUTCString() + "; path=/";
+    }
+
+    // Função para verificar se o pop-up foi fechado anteriormente
+    function hasExitPopupClosedCookie() {
+        return document.cookie.indexOf("exitPopupClosed=true") !== -1;
+    }
+
+    // Evento de intenção de saída
+    document.addEventListener("mouseleave", function (event) {
+        if (event.clientY < 0 && !hasExitPopupCookie() && !hasExitPopupClosedCookie()) {
+            showExitPopup();
+        }
+    });
+
+    // Adicione um ouvinte de evento de envio ao formulário
+    var exitPopupForm = document.getElementById("exit-popup-form");
+    exitPopupForm.addEventListener("submit", function (event) {
+        // Impedir o envio padrão do formulário
+        event.preventDefault();
+        // Fechar o pop-up após o envio bem-sucedido
+        closeExitPopup();
+        // Definir o cookie para indicar que o pop-up foi exibido
+        setExitPopupCookie();
+    });
+
+    // Verifique se o pop-up já foi exibido ou fechado quando a página carregar
+    window.addEventListener("load", function () {
+        if (hasExitPopupCookie() || hasExitPopupClosedCookie()) {
+            closeExitPopup();
+        }
+    });
+</script>
+

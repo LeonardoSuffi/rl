@@ -1,0 +1,204 @@
+<form id="meuFormulario">
+    <div id="etapa1">
+        <p id="p1">1/2</p>
+        <p id="p1">Primeiro Passo</p>
+        <input type="text" size="40" class="nome" id="nome" aria-required="true" aria-invalid="false"
+            placeholder="Primeiro Nome*" />
+        <input type="button" onclick="proximoPasso(2)" id="but1" value="Próximo" />
+    </div>
+    <div id="etapa2" style="display: none;">
+        <p id="p1">2/2</p>
+        <p id="p1">Segundo Passo</p>
+        <input type="tel" size="20" class="tel" id="tel" aria-required="true" aria-invalid="false"
+            placeholder="(00) 90000-0000" />
+        <input type="email" size="40" class="email" id="email" aria-required="true" aria-invalid="false"
+            placeholder="exemplo@email.com" />
+        <input type="submit" id="sub1" value="Ativar Aplicativo" />
+        <input type="button" id="but" onclick="proximoPasso(1)" value="Voltar" />
+    </div>
+</form>
+<script>
+    var etapaAtual = 1;
+
+    function proximoPasso(etapa) {
+        if (etapa === 1) {
+            document.getElementById('etapa2').style.display = 'none';
+            document.getElementById('etapa1').style.display = 'block';
+            etapaAtual = 1;
+        } else if (etapa === 2 && etapaAtual === 1) {
+            document.getElementById('etapa1').style.display = 'none';
+            document.getElementById('etapa2').style.display = 'block';
+            etapaAtual = 2;
+        }
+    }
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.js"></script>
+<script>
+  $(document).ready(function () {
+    $("#tel").mask("(00) 00000-0000");
+  });
+</script>
+
+<style>
+#nome, #tel, #email{
+    width: 100%;
+    height: 45px;
+    background-color: transparent;
+    font-size: 17px;
+    padding-left: 10px;
+    border: none;
+    border-bottom: 1px solid #00000034;
+   border-radius: 2px;
+}
+#meuFormulario{
+    background-color:#0000000c;
+    padding: 40px;
+    border-bottom: 5px solid #FFFF00;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.4);
+
+}
+#p1{
+    font-weight: 700;
+    font-family: 20px;
+}
+#but1,#but, #sub1{
+   width: 100%;
+   height: 45px;
+   margin-top: 15px;
+   font-size: 17px;
+   font-weight: 700;
+   cursor: pointer;
+   background-color:#FFFF00;
+   border: 0.5px solid #00000015;
+   color: #000;
+   border-radius: 2px;
+}
+#but{
+    background-color: black !important;
+    color: aliceblue !important;
+}
+#sub1:hover{
+    background-color: #fafa1a;
+}
+</style>
+
+
+<script>
+    function getParameterByName(name) {
+  name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+  let regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+    results = regex.exec(location.search);
+  return results === null
+    ? ""
+    : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+document.getElementById('meuFormulario').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    // Obtenha os valores dos campos do formulário
+    var nome = document.getElementById('nome').value;
+    var telefone = document.getElementById('tel').value;
+    var email = document.getElementById('email').value;
+    let utm_source = getParameterByName("utm_source");
+    let utm_campaign = getParameterByName("utm_campaign");
+
+    // Crie um objeto com os dados a serem enviados para o webhook
+    var dadosContato = {
+        fields: {
+            NAME: nome,
+            PHONE: [
+                {
+                    VALUE: telefone,
+                    VALUE_TYPE: "WORK"
+                }
+            ],
+            EMAIL: [
+                {
+                    VALUE: email,
+                    VALUE_TYPE: "WORK"
+                }
+            ]
+        }
+    };
+
+    // Converta o objeto de dados do contato em JSON
+    var dadosContatoJSON = JSON.stringify(dadosContato);
+
+    // URL do webhook para criar um contato
+    var urlDoWebhookContato = 'https://motoca.bitrix24.com.br/rest/144713/5btimwclw6xp6n2d/crm.contact.add.json';
+
+    // Crie uma solicitação POST para criar o contato
+    var xhrContato = new XMLHttpRequest();
+    xhrContato.open('POST', urlDoWebhookContato, true);
+    xhrContato.setRequestHeader('Content-Type', 'application/json');
+
+    // Envie os dados JSON do contato no corpo da solicitação
+    xhrContato.send(dadosContatoJSON);
+
+    // Manipule a resposta do webhook de contato, se necessário
+    xhrContato.onreadystatechange = function () {
+        if (xhrContato.readyState === 4) {
+            if (xhrContato.status === 200) {
+                // A solicitação de contato foi bem-sucedida
+                console.log('Contato criado com sucesso.');
+                
+                // Agora, crie um negócio (deal) relacionado a esse contato
+                criarNegocio(xhrContato.responseText);
+            } else {
+                // A solicitação de contato não foi bem-sucedida
+                console.error('Erro ao criar o contato.');
+            }
+        }
+    };
+
+    // Função para criar um negócio relacionado ao contato
+    function criarNegocio(contactResponse) {
+        // Analise a resposta do contato para obter o ID do contato criado
+        var contactData = JSON.parse(contactResponse);
+        var contactId = contactData.result;
+        var stageId = 17;
+        // Agora, crie um objeto com os dados para o negócio (deal)
+        var dadosNegocio = {
+            fields: {
+                TITLE: "Negócio associado a " + nome,
+                CONTACT_ID: contactId,
+                UTM_CAMPAIGN:utm_campaign,
+                UTM_SOURCE: utm_source,
+                STAGE_ID: 17,
+                OPENED: "Y"
+            },
+            params: { "REGISTER_SONET_EVENT": "Y" }
+        };
+
+        // Converta o objeto de dados do negócio em JSON
+        var dadosNegocioJSON = JSON.stringify(dadosNegocio);
+
+        // URL do webhook para criar um negócio (deal)
+        var urlDoWebhookNegocio = 'https://motoca.bitrix24.com.br/rest/144713/5btimwclw6xp6n2d/crm.deal.add.json';
+
+        // Crie uma solicitação POST para criar o negócio (deal)
+        var xhrNegocio = new XMLHttpRequest();
+        xhrNegocio.open('POST', urlDoWebhookNegocio, true);
+        xhrNegocio.setRequestHeader('Content-Type', 'application/json');
+
+        // Envie os dados JSON do negócio (deal) no corpo da solicitação
+        xhrNegocio.send(dadosNegocioJSON);
+
+        // Manipule a resposta do webhook de negócio (deal), se necessário
+        xhrNegocio.onreadystatechange = function () {
+            if (xhrNegocio.readyState === 4) {
+                if (xhrNegocio.status === 200) {
+                    // A solicitação de negócio (deal) foi bem-sucedida
+                    console.log('Negócio (deal) criado com sucesso.');
+                    window.location.href = 'https://vaidemotoca.com/campanha/app';
+                } else {
+                    // A solicitação de negócio (deal) não foi bem-sucedida
+                    console.error('Erro ao criar o negócio (deal).');
+                }
+            }
+        };
+    }
+});
+</script>

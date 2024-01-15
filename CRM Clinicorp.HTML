@@ -1,0 +1,77 @@
+<style>
+  [hidden] {
+    display: block;
+  }
+
+  #subscriber_id, #boardname {
+    display: none;
+  }
+</style>
+
+<form id="form1">
+  <input type="text" hidden value="sekai" id="subscriber_id" name="subscriber_id" required>
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+  </div>
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+  </div>
+  <div>
+    <label for="phone">Phone:</label>
+    <input type="tel" id="phone" name="phone" required>
+  </div>
+  <input type="text" hidden value="Sekai" id="boardname" name="boardname" required>
+  <div>
+    <label for="notes">Notes:</label>
+    <textarea id="notes" name="notes"></textarea>
+  </div>
+  <button type="submit">Enviar</button>
+</form>
+
+<script>
+document.getElementById("subscriber_id").addEventListener("blur", myFunction);
+
+function myFunction() {
+    document.getElementById("pesquisa").style.display = "none";
+}
+</script>
+<script>
+  const form = document.getElementById('form1');
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const data = {
+      subscriber_id: form.subscriber_id.value,
+      Name: form.name.value,
+      Email: form.email.value,
+      Phone: form.phone.value,
+      BoardName: form.boardname.value,
+      Notes: form.notes.value
+    };
+
+    const url = 'https://api.clinicorp.com/rest/v1/crm/add_leads';
+    const username = 'sekai';
+    const password = '11954576-e6a1-4c68-b582-d2cab37bed92';
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'Basic ' + btoa(username + ':' + password)
+    });
+
+    const requestOptions = {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify(data)
+    };
+
+    try {
+      const response = await fetch(url, requestOptions);
+      const responseData = await response.json();
+      console.log(responseData);
+    } catch (error) {
+      console.error(error);
+    }
+  });
+</script>

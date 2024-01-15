@@ -1,0 +1,23 @@
+{"user": {"id": null, "name": "null", "avatar":"null", "telefone": "null" }}
+Novo lead na plataforma
+```
+Nome: {title}
+Empresa: {company.name}
+Telefone: {person.contact_phones[0].number}
+Vindo do Formulario: {origin.name}
+https://wa.me/{person.contact_phones[0].number}
+```
+
+
+***************************************
+Resetar servidor hostinger
+cd public_html
+
+
+backup=WP_`date +%s` && mkdir $backup && mv wp-admin $backup && mv wp-includes $backup && mv .php $backup && wget https://wordpress.org/latest.zip && unzip latest.zip && rm -rf wordpress/wp-content && mv wordpress/ . && cp -rv $backup/wp-config.php .
+
+
+método de classe não é executavel por isso não pode usar Scanner e sim scanner sem S maiusculo.
+
+
+//define('WP_MEMORY_LIMIT', '128M');   na pasta config.php do cpanel para aumentar o limite de arquivos que posso ter no site

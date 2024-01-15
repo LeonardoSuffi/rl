@@ -1,0 +1,70 @@
+    <form id="meuFormulario">
+        <input type="text" size="40" class="nome" id="nome" aria-required="true" aria-invalid="false"
+            placeholder="Seu Nome" />
+        <input type="tel" size="20" class="tel" id="tel" aria-required="true" aria-invalid="false"
+            placeholder="(00) 90000-0000" />
+        <input type="email" size="40" class="email" id="email" aria-required="true" aria-invalid="false"
+            placeholder="exemplo@email.com" />
+        <input type="submit" id="sub1" value="Receber Contato" />
+    </form>
+
+    <script>
+        document.getElementById('meuFormulario').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Obtenha os valores dos campos do formulário
+            var nome = document.getElementById('nome').value;
+            var telefone = document.getElementById('tel').value;
+            var email = document.getElementById('email').value;
+
+            // Crie um objeto com os dados a serem enviados para o webhook
+            var dados = {
+                fields: {
+                    NAME: nome,
+                    SECOND_NAME: "",
+                    LAST_NAME: "",
+                    PHONE: [
+                        {
+                            VALUE: telefone,
+                            VALUE_TYPE: "WORK"
+                        }
+                    ],
+                    EMAIL: [
+                        {
+                            VALUE: email,
+                            VALUE_TYPE: "WORK"
+                        }
+                    ]
+                }
+            };
+
+            // Converta o objeto de dados em JSON
+            var dadosJSON = JSON.stringify(dados);
+
+            // URL do webhook
+            var urlDoWebhook = 'https://motoca.bitrix24.com.br/rest/144713/2y8906f2lb2qijau/crm.lead.add.json';
+
+            // Crie uma solicitação POST
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', urlDoWebhook, true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+
+            // Envie os dados JSON no corpo da solicitação
+            xhr.send(dadosJSON);
+
+            // Manipule a resposta do webhook, se necessário
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        // A solicitação foi bem-sucedida
+                        console.log('Dados enviados com sucesso para o webhook.');
+                    } else {
+                        // A solicitação não foi bem-sucedida
+                        console.error('Erro ao enviar dados para o webhook.');
+                    }
+                }
+            };
+        });
+    </script>
+</body>
+</html>

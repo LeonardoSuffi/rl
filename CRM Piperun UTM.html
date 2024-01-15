@@ -1,0 +1,149 @@
+<form id="leo1">
+  <input type="text" name="nome" size="40" class="Nome1" id="Nome1" aria-required="true" aria-invalid="false"
+    placeholder="Seu nome" />
+    <input type="tel" name="whatsapp" class="Whatsapp1" id="Whatsapp1" aria-required="true" aria-invalid="false" placeholder="Telefone" oninput="this.value = this.value.replace(/\D/g, '').replace(/^(\d{2})(\d{5})(\d{4}).*/, '($1) $2-$3');" />
+  <input type="email" name="email" size="40" class="Email1" id="Email1" aria-required="true" aria-invalid="false"
+    placeholder="E-mail" />
+  <button type="submit" id="sub1">
+    Falar com Vendedor!
+  </button>
+</form>
+<script>
+  function getParameterByName(name) {
+  name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+  let regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+    results = regex.exec(location.search);
+  return results === null
+    ? ""
+    : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+  document.querySelector('#leo1').addEventListener('submit', function() {
+    event.preventDefault();
+  let endpointHash =
+    "https://app.pipe.run/webservice/integradorJson?hash=2eba4fdf-35c0-4ade-a8a7-0b3f662b7554";
+  let name = document.querySelector(".Nome1").value;
+  let email = document.querySelector(".Email1").value;
+  let phone = document.querySelector(".Whatsapp1").value;
+  let utm_source = getParameterByName("utm_source");
+  let utm_medium = getParameterByName("utm_medium");
+  let utm_campaign = getParameterByName("utm_campaign");
+  let utm_term = getParameterByName("utm_term");
+  let utm_content = getParameterByName("utm_content");
+  let utm_position = getParameterByName("utm_position");
+  let utm_device = getParameterByName("utm_device");
+  let utm_match = getParameterByName("utm_match");
+  let utm_creative = getParameterByName("utm_creative");
+
+  function configPost(method, body) {
+    return {
+      method: method,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    };
+  }
+
+  let rules = {
+    update: true,
+    filter_status_update: "open",
+    status: "open",
+  };
+
+  let lead = [
+    {
+      id: email,
+      title: name,
+      mobile_phone: phone,
+      name: name,
+      email: email,
+      last_conversion: {
+        source: "Sofá",
+      },
+      custom_fields: {
+        url_conversao: location.href,
+        utm_source: utm_source,
+        utm_medium: utm_medium,
+        utm_campaign: utm_campaign,
+        utm_term: utm_term,
+        utm_content: utm_content,
+        utm_position: utm_position,
+        utm_device: utm_device,
+        utm_match: utm_match,
+        utm_creative: utm_creative,
+      },
+    },
+  ];
+
+    let dataToSend = {
+      rules: rules,
+      leads: lead,
+    };
+    if (name.trim() === "" || phone.trim() === "") {
+      event.preventDefault();
+      alert(
+        "Existe campo sem informação"
+      );
+    }       
+    else {
+      fetch(endpointHash, configPost("POST", dataToSend)).then((data) => {
+        window.location.assign("https://plenaoutlet.com.br/obrigado");
+      });
+    }
+
+
+  });
+  </script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.js"></script>
+
+
+<script>
+$(document).ready(function () {
+  $(".Whatsapp1").mask("(00) 00000-0000");
+});
+</script>
+<style>
+  #leodev1{
+  text-align: center;
+  align-items: center;
+  align-content: center;
+}
+#Nome1, #Email1, #Whatsapp1 {
+  text-align: left;
+  width: 100%;
+  margin-bottom: 15px;
+  border: solid 1px;
+  font-size: 20px;
+  border-radius: 5px;
+}
+#sub1{
+    font-family: "Sora", Sans-serif;
+  font-size: 20px;
+  width: 100%;
+  height: 55px;
+  letter-spacing: 3px;
+  color: #fff;
+  background-color: transparent;
+  background-image: linear-gradient(180deg, #E43732 100%, #000 100%);
+  border-style: none;
+  border-radius: 6px 6px 6px 6px;
+  box-shadow: 3px 9px 2px -1px rgba(0,0,0,0.5);
+}
+
+#sub1:hover {
+    background-image: linear-gradient(180deg, #000 0%, #18375C 100%);
+transform: translateY(-5px)
+}
+
+input { color: #ffffff }
+::placeholder {
+  color: #3A573A !important;
+  }
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #3A573A !important;
+  }
+  ::-webkit-input-placeholder { /* Edge */
+  color: #3A573A !important;
+  }
+</style>

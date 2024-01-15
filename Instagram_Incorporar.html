@@ -1,0 +1,111 @@
+<div id="leo" class="leo"></div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const token = "IGQWRPcmhrRFByMWRsNkJSTlNGakhFSFhRVHJoR2gzYkpBWExHdHY4bnFXeGxSQ3BUaVNWS05UWG8xMnUzanU2VjVqZAWdHX1ZAJWjU0VVN2MHUtTDJ0MDhfeGRnR0Y5alVLdDNJZA2NDRXZAucGRPRkNucWhQQUE4TzAZD";
+    const url = `https://graph.instagram.com/me/media?access_token=${token}&fields=media_url,media_type,caption,permalink`;
+
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        const meuinsta = data.data.slice(0, 12); // Limita apenas aos primeiros 12 itens
+        let conteudo = '';
+
+        for (let i = 0; i < meuinsta.length; i++) {
+          const feed = meuinsta[i];
+          const titulo = feed.caption !== null ? feed.caption : '';
+          const tipo = feed.media_type;
+
+          if (tipo === 'VIDEO') {
+            conteudo += `<div><video controls><source src="${feed.media_url}" type="video/mp4"></video></div>`;
+          } else if (tipo === 'IMAGE') {
+            conteudo += `<div><img title="${titulo}" alt="${titulo}" src="${feed.media_url}" onclick="window.open('${feed.permalink}')"></div>`;
+          }
+        }
+
+        document.getElementById('leo').innerHTML = conteudo;
+      })
+      .catch(error => console.log(error));
+  });
+</script>
+
+<style>
+  .leo {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .leo > div {
+    flex: 1 0 20%;
+    margin: 5px;
+  }
+
+  @media (max-width: 992px) {
+    .leo > div {
+      flex-basis: 33.33%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .leo > div {
+      flex-basis: 20%;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .leo > div {
+      flex-basis: 100%;
+    }
+  }
+</style>
+
+
+
+<div id="leo" class="leo"></div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const token = "IGQWRPcmhrRFByMWRsNkJSTlNGakhFSFhRVHJoR2gzYkpBWExHdHY4bnFXeGxSQ3BUaVNWS05UWG8xMnUzanU2VjVqZAWdHX1ZAJWjU0VVN2MHUtTDJ0MDhfeGRnR0Y5alVLdDNJZA2NDRXZAucGRPRkNucWhQQUE4TzAZD";
+    const url = `https://graph.instagram.com/me/media?access_token=${token}&fields=media_url,media_type,caption,permalink`;
+
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        const meuinsta = data.data.slice(0, 4); // Limita apenas aos primeiros 2 itens
+        let conteudo = '';
+
+        for (let i = 0; i < meuinsta.length; i++) {
+          const feed = meuinsta[i];
+          const titulo = feed.caption !== null ? feed.caption : '';
+          const tipo = feed.media_type;
+
+          if (tipo === 'VIDEO') {
+            conteudo += `<div><video controls style="object-fit: cover; width: 100%; height: 265px;"><source src="${feed.media_url}" type="video/mp4"></video></div>`;
+          } else if (tipo === 'IMAGE') {
+            conteudo += `<div><img title="${titulo}" alt="${titulo}" src="${feed.media_url}" onclick="window.open('${feed.permalink}')"></div>`;
+          }
+        }
+
+        document.getElementById('leo').innerHTML = conteudo;
+      })
+      .catch(error => console.log(error));
+  });
+</script>
+
+<style>
+  .leo {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .leo > div {
+    flex: 1 0 20%;
+    margin: 5px;
+  }
+@media (max-width: 580px) {
+    .leo > div {
+    flex: 1 0 100%;
+    margin: 5px;
+  }    
+  }
+</style>

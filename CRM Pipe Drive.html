@@ -1,0 +1,49 @@
+<form id="form21">
+	<label for="name">Nome:</label>
+	<input type="text" id="name21" name="name" /><br />
+  
+	<label for="email">E-mail:</label>
+	<input type="email" id="email21" name="email" /><br />
+  
+	<label for="phone">Telefone:</label>
+	<input type="tel" id="phone21" name="phone" /><br />
+  
+	<label for="cnpj">CNPJ:</label>
+	<input type="text" id="cnpj21" name="cnpj" /><br />
+  
+	<button type="submit">Enviar</button>
+  </form>
+  
+  <script>
+	function enviarDados() {
+	  const form = document.getElementById("form21");
+  
+	  form.addEventListener("submit", (event) => {
+		event.preventDefault();
+  
+		const name = document.getElementById("name21").value;
+		const email = document.getElementById("email21").value;
+		const phone = document.getElementById("phone21").value;
+		const cnpj = document.getElementById("cnpj21").value;
+  
+		const data = {
+		  title: name,
+		  person_id: { name: name, email: [{ value: email, primary: true }], phone: [{ value: phone, primary: true }], org_id: { name: cnpj } },
+		};
+  
+		fetch("https://api.pipedrive.com/v1/deals?api_token=6309e9b48788d52e4f4644712ce7fd67ecd50a8f", {
+		  method: "POST",
+		  headers: {
+			"Content-Type": "application/json",
+		  },
+		  body: JSON.stringify(data),
+		})
+		  .then((response) => response.json())
+		  .then((data) => console.log(data))
+		  .catch((error) => console.error(error));
+	  });
+	}
+  
+	enviarDados();
+  </script>
+  

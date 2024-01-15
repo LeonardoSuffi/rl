@@ -1,0 +1,81 @@
+<form id="btoi">
+  <input type="text" id="nome1" placeholder="Seu Nome" name="name" required>
+  <input type="text" id="telefone1" placeholder="DDD+Telefone" name="telefone" required>
+  <input type="email" id="email1" placeholder="Seu E-mail" name="email" required>
+  <button id="sub1">Receber uma Oferta no meu Carro</button>
+  </form>
+  <script>
+function getParameterByName(name) {
+  name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+  let regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+    results = regex.exec(location.search);
+  return results === null
+    ? ""
+    : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+      document.addEventListener('DOMContentLoaded', function () {
+const form = document.querySelector("#sub1");
+form.addEventListener('click', function (event) {
+  event.preventDefault(); // Impede o envio padrão do formulário
+
+  // Obtém referências para os campos do formulário
+  const nome = document.getElementById('nome1').value;
+  const telefone = document.getElementById('telefone1').value;
+  const email = document.getElementById('email1').value;
+  const utm_source = getParameterByName("utm_source");
+  const utm_campaign = getParameterByName("utm_campaign");
+
+  // Cria um objeto com os dados do formulário
+  const formData = {
+    event_type: 'CONVERSION',
+    event_family: 'CDP',
+    payload: {
+      conversion_identifier: 'utm_campaign Site',
+      name: nome,
+      email: email,
+      job_title: '',
+      state: '',
+      city: '',
+      country: '',
+      personal_phone: '',
+      mobile_phone: telefone,
+      twitter: '',
+      facebook: '',
+      linkedin: '',
+      website: '',
+      cf_custom_field_name: '',
+      company_name: '',
+      company_site: '',
+      company_address: '',
+      client_tracking_id: '',
+      traffic_source: 'utm_source',
+      traffic_medium: '',
+      traffic_campaign: 'utm_campaign',
+      traffic_value: '',
+      tags: ['mql', 'prospecção'],
+      available_for_mailing: true,
+      legal_bases: [{ category: 'communications', type: 'consent', status: 'granted' }],
+    },
+  };
+
+  // Configuração da solicitação
+  const options = {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(formData),
+  };
+
+  // Envia a solicitação para a API da RD Station
+  fetch('https://api.rd.services/platform/conversions?api_key=hvctOVaLbZzMCwowsENfPMStfhpOaRdNJWNi', options)
+    .then(response => response.json())
+    .then(response => console.log(response))
+    .catch(err => console.error(err));
+    window.location.href = 'https://vendermeucarroagora.com.br/campanha/obrigado/';
+});
+});
+
+  </script>

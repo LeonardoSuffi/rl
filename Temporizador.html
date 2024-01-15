@@ -1,0 +1,37 @@
+<p>Restam <span id="contadorMarcas"></span> marcas</p>
+
+<script>
+    var inicio = Math.ceil(Date.parse('2022-11-18T08:00:00') / 1000) // Substituir a data inicial
+    var marcas = 500
+    calculaMarcas()
+    setInterval(calculaMarcas, 60000)
+    function calculaMarcas() {
+        console.log('Calculando')
+        var agora = Math.ceil(Date.now() / 1000)
+
+        var diferenca = (agora - inicio) / 60
+
+        var subtrair = 0
+        if (diferenca > 0) {
+            subtrair = Math.floor(diferenca / 7)
+        }
+
+        if (subtrair > 500) {
+            subtrair = 500
+        }
+
+        document.getElementById('contadorMarcas').innerHTML = marcas - subtrair
+    }
+</script>
+
+<style>
+    .MARCASSS {
+      margin-top: 150px;
+      text-align: center;
+      font-size: 60px;
+      font-family: "century gothic";
+      color: #ffffcc;
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px PURPLE,
+        0 0 30px PURPLE, 0 0 40px PURPLE, 0 0 55px PURPLE, 0 0 70px PURPLE;
+    }
+  </style>

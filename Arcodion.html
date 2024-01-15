@@ -1,0 +1,156 @@
+<style>
+  .accordion_item {
+    margin: 20px 0px;
+    border: 1px solid #343a40;
+    border-radius: 5px;
+  }
+
+  .accordion_item:hover {
+    opacity: 1;
+  }
+
+  .accordion_header {
+    font-family: "Instrument Sans", Sans-serif;
+    height: 64px;
+    padding: 0px 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    color: #003539;
+    font-size: 1em;
+    font-weight: 700;
+    align-items: center;
+  }
+
+  .accordion_content {
+    font-family: "Instrument Sans", Sans-serif;
+    padding-left: 20px;
+    padding-right: 80px;
+    height: 0;
+    transition: all .5s ease;
+    font-size: 16px;
+    overflow: hidden;
+  }
+
+  .active {
+    padding-bottom: 10px;
+    background-color: #ffffff;
+    transition: all 1s ease;
+  }
+
+  .icon {
+    font-family: "Instrument Sans", Sans-serif;
+    font-size: 36px;
+    font-weight: 400;
+    color: #06c000;
+    transition: transform 0.3s;
+  }
+
+  .active .icon {
+    transform: rotate(45deg);
+    color: #212529;
+    font-size: 36px;
+    transition: all 1s ease;
+  }
+  
+  .active .accordion_header{
+    color: #212529;
+  }
+  
+  @media (max-width: 767px) {
+    .icon {
+    font-size: 24px; 
+    margin-left: 36px;
+}
+
+  .active .icon {
+    transform: rotate(45deg);
+    color: #212529;
+    font-size: 24px;
+
+}
+
+ .accordion_header {
+     font-size: 14px;
+}
+
+
+  .accordion_content {
+      font-size: 14px;
+  }
+
+}
+  
+</style>
+
+<div class="accordion">
+  <div class="accordion_item">
+    <div class="accordion_header">
+      Quanto tempo demora para abrir uma empresa?
+      <div class="icon">+</div>
+    </div>
+    <div class="accordion_content">
+      Depende da demanda da junta comercial de cada estado, mas aqui no paraná, após o envio de toda documentação e protocolo, lhe entregamos tudo em 1 hora*
+    </div>
+  </div>
+  <div class="accordion_item">
+    <div class="accordion_header">
+      Quais documentos pessoais eu preciso para abrir minha empresa?
+      <div class="icon">+</div>
+    </div>
+    <div class="accordion_content">
+      Pode sim. Isso só irá atrapalhar caso queira algum crédito com bancos, mas é importante solucionar essas pendências pois um CNPJ forte precisa de um CPF forte.
+    </div>
+  </div>
+  <div class="accordion_item">
+    <div class="accordion_header">
+      Eu não tenho endereço, posso registrar minha empresa em endereço residencial?
+      <div class="icon">+</div>
+    </div>
+    <div class="accordion_content">
+      Se sua atividade for de baixo risco, pode sim, mas tudo isso é avaliado pelos nossos especialistas
+    </div>
+  </div>
+  <div class="accordion_item">
+    <div class="accordion_header">
+      Minha empresa pode ser registrada no regime Simples Nacional?
+      <div class="icon">+</div>
+    </div>
+    <div class="accordion_content">
+      O regime tributário é o mais importante na vida do CNPJ. Sempre presamos pelo enquadramento com o menor custo de impostos possível, mas isso é avaliado por um de nossos contadores experts
+    </div>
+  </div>
+</div>
+
+<script>
+  const accordion_items = document.querySelectorAll(".accordion_item");
+
+  accordion_items.forEach((item) => {
+    const accordion_header = item.querySelector(".accordion_header");
+
+    accordion_header.addEventListener("click", () => {
+      const accordion_content = item.querySelector(".accordion_content");
+      const icon = accordion_header.querySelector(".icon");
+      const active_item = document.querySelector(".active");
+
+      if (active_item && active_item !== item) {
+        const active_content = active_item.querySelector(".accordion_content");
+        const active_icon = active_item.querySelector(".icon");
+
+        active_content.style.height = 0;
+        active_item.classList.remove("active");
+        active_icon.innerHTML = "+";
+      }
+
+      if (!item.classList.contains("active")) {
+        accordion_content.style.height = accordion_content.scrollHeight + "px";
+        item.classList.add("active");
+        icon.innerHTML = "+";
+      } else {
+        accordion_content.style.height = 0;
+        item.classList.remove("active");
+        icon.innerHTML = "+";
+      }
+    });
+  });
+</script>

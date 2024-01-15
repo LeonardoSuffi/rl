@@ -1,0 +1,24 @@
+    <button id="b22">teste</button>
+
+    <script>
+        // Função para verificar o sistema operacional
+        document.getElementById('b22').addEventListener('click', function() {
+            function detectarSistemaOperacional() {
+                const userAgent = navigator.userAgent.toLowerCase();
+
+                if (userAgent.includes("android")) {
+                    // Redirecionar para o link do Android
+                    window.location.href = "https://www.seu-link-para-android.com";
+                } else if (userAgent.includes("iphone") || userAgent.includes("ipad")) {
+                    // Redirecionar para o link do iOS
+                    window.location.href = "https://www.seu-link-para-ios.com";
+                } else {
+                    // Redirecionar para um link padrão se não for Android ou iOS
+                    window.location.href = "https://www.seu-link-padrao.com";
+                }
+            }
+
+            // Chamar a função de detecção ao clicar no botão
+            detectarSistemaOperacional();
+        });
+    </script>
