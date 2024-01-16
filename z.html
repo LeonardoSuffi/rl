@@ -1,71 +1,88 @@
-
-
-
-
-<a class="pd" href="#elementor-action%3Aaction%3Dpopup%3Aopen%26settings%3DeyJpZCI6IjIwMDYiLCJ0b2dnbGUiOmZhbHNlfQ%3D%3D">Digite sua <span id="frase"></span><span id="cursor"></span></a>
-
-<style>
-          #frase{
-      color: #CC84FF;
-    }
-            #cursor {
-      display: inline-block;
-      width: 2px;
-      height: 20px;
-      animation: blink 0.7s infinite;
-      font-size: 20px;
-    }
-    .pd{
-        font-size: 17px;
-        font-weight: 700;
-        color: #0C0C36;
-        text-transform: none;
-        text-decoration: none;
-    }
-    a.pd:hover {
-    color: #0C0C36;
-    cursor: text;
-}
-</style>
-
-
+<!---->
 <script>
-  // Array de frases para alternar
-  const frases = [
-  "marca aqui. "
-  ];
-
-  const spanFrase = document.getElementById("frase");
-  const spanCursor = document.getElementById("cursor");
-  let index = 0;
-  let fraseAtual = "";
-  let letraAtual = 0;
-
-  // Função para simular digitação da frase
-  function digitarFrase() {
-    if (letraAtual < frases[index].length) {
-      fraseAtual += frases[index][letraAtual];
-      spanFrase.textContent = fraseAtual;
-      letraAtual++;
-      setTimeout(digitarFrase, 100); // Tempo entre as letras (ajuste conforme desejado)
-    } else {
-      setTimeout(apagarFrase, 1000); // Tempo para manter a frase completa (ajuste conforme desejado)
-    }
+    function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    let regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+      results = regex.exec(location.search);
+    return results === null
+      ? ""
+      : decodeURIComponent(results[1].replace(/\+/g, " "));
   }
-
-  // Função para apagar a frase
-  function apagarFrase() {
-    if (fraseAtual.length > 0) {
-      fraseAtual = fraseAtual.slice(0, -1);
-      spanFrase.textContent = fraseAtual;
-      setTimeout(apagarFrase, 50); // Tempo entre as letras (ajuste conforme desejado)
-    } else {
-      index = (index + 1) % frases.length;
-      letraAtual = 0;
-      setTimeout(digitarFrase, 500); // Tempo antes de começar a digitar a próxima frase (ajuste conforme desejado)
+  
+    document.querySelector('#leo').addEventListener('submit', function() {
+      event.preventDefault();
+    let endpointHash =
+      "https://app.pipe.run/webservice/integradorJson?hash=a1f5da7e-4346-49ea-a17d-ebaca4443b3d";
+    let name = document.querySelector(".nome").value;
+    let email = document.querySelector(".email").value;
+    let phone = document.querySelector(".tel").value;
+    let cidade = document.querySelector(".cidade").value;
+    let utm_source = getParameterByName("utm_source");
+    let utm_medium = getParameterByName("utm_medium");
+    let utm_campaign = getParameterByName("utm_campaign");
+    
+  
+    function configPost(method, body) {
+      return {
+        method: method,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      };
     }
-  }
+  
+    let rules = {
+      update: true,
+      filter_status_update: "open",
+      status: "open",
+    };
+  
+    let lead = [
+      {
+        id: phone,
+        "title": name.toUpperCase() + " - " + cidade.toUpperCase(),
+        mobile_phone: phone,
+        name: name,
+        city_name: cidade,
+        email: email,
+        last_conversion: {
+          source: "Franquia Site",
+        },
+        custom_fields: {
+            url_conversao: location.href,
+            utm_source: utm_source,
+            utm_medium: utm_medium,
+            utm_campaign: utm_campaign,
+        },
+      },
+    ];
+  
+      let dataToSend = {
+        rules: rules,
+        leads: lead,
+      };
 
-  // Inicializar a animação
-  digitarFrase();
-</script>
+      fetch(endpointHash, configPost("POST", dataToSend))
+  .then((data) => {
+    document.getElementById('leo').style.display = 'none';
+    mensagemObrigado.style.display = 'block';
+    gtag_report_conversion();
+  });
+  
+    });
+    </script>
+
+  <script>
+    function gtag_report_conversion(url) {
+      var callback = function () {
+        if (typeof(url) != 'undefined') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'conversion', {
+          'send_to': 'AW-11474129642/xPNaCI-fn4kZEOqlpd8q',
+          'event_callback': callback
+      });
+      return false;
+    }
+    </script>
+    
