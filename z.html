@@ -1,37 +1,139 @@
+<div id="exit-popup" class="popup">
+    <div class="popup-content">
+        <span class="popup-close" onclick="closeExitPopup()">&times;</span>
+        <span class="b">Preencha o formulário<br>Otimize seu orçamento e impulsione o crescimento</span>
+        <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+        <script>
+          hbspt.forms.create({
+            region: "na1",
+            portalId: "44158991",
+            formId: "8c17c523-e642-4f40-90fe-71c2d9b9def1"
+          });
+        </script>
+    </div>
+</div>
 
-<script type="application/ld+json">
-    {
-      "@context": "http://schema.org",
-      "@type": "AutoPartsStore",
-      "name": "Auto Peças Guigo",
-      "description": "Autopeças em Anchieta. Encontre peças de alta qualidade a preços competitivos. Entrega rápida e atendimento excepcional AUTO PEÇAS GUIGO",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Cipriano Barata, 100",
-        "addressLocality": "Anchieta",
-        "addressRegion": "Rio de Janeiro",
-        "postalCode": "21620-190"
-      },
-      "telephone": "21 97183-0853",
-      "email": "contato@guigoautopecas.com.br",
-      "url": "https://autopecasguigo.com.br/",
-      "image": "https://autopecasguigo.com.br/wp-content/uploads/2022/10/favicon.png",
-      "openingHours": "08:00-18:00",
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "-22.834537",
-        "longitude": "-43.408745"
-      },
-      "priceRange": "R$0 - R$500,00",  // Corrigi o zero extra
-      "paymentAccepted": "Dinheiro, Cartão de Crédito, Cartão de Débito, PIX",
-      "currenciesAccepted": "BRL",
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "Atendimento ao Cliente",
-        "telephone": "+55-21-97183-0853",
-        "email": "contato@guigoautopecas.com.br",
-        "availableLanguage": "Portuguese"
-      }
+<style>
+/* Estilo para o fundo do pop-up */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+}
+
+/* Estilo para o conteúdo do pop-up */
+.popup-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: transparent;
+    background-image: url('http://conteudo.ravvor.com.br/wp-content/uploads/2023/12/bg-top.44ca2f80-scaled.webp');
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    width: 550px; /* Ajuste o tamanho conforme necessário */
+}
+
+/* Estilo para o botão de fechar */
+.popup-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 17px;
+    color: #f6f6f6;
+    cursor: pointer;
+}
+
+/* Estilo para o título do pop-up */
+.popup-content h2 {
+    font-size: 30px;
+    color: #d3195a;
+    font-family: Montserrat, sans-serif;
+    margin-bottom: 10px;
+}
+
+/* Estilo para o texto do pop-up */
+.popup-content p {
+    font-size: 20px;
+    font-family: Montserrat, sans-serif;
+    margin-bottom: 20px;
+}
+.b {
+    color: #faab3b;
+    font-family: "Open Sans",Sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+}
+</style>
+<script>
+    // Função para exibir o pop-up de intenção de saída
+    function showExitPopup() {
+        var popup = document.getElementById("exit-popup");
+        popup.style.display = "block";
     }
-    </script>
-    
+
+    // Função para fechar o pop-up
+    function closeExitPopup() {
+        var popup = document.getElementById("exit-popup");
+        popup.style.display = "none";
+        // Definir um cookie indicando que o pop-up foi fechado
+        setExitPopupClosedCookie();
+    }
+
+    // Função para verificar se o cookie de pop-up já foi exibido
+    function hasExitPopupCookie() {
+        return document.cookie.indexOf("exitPopupShown=true") !== -1;
+    }
+
+    // Função para definir um cookie que rastreia que o pop-up foi exibido
+    function setExitPopupCookie() {
+        var expirationDate = new Date();
+        expirationDate.setFullYear(expirationDate.getFullYear() + 1); // Cookie válido por 1 ano
+        document.cookie = "exitPopupShown=true; expires=" + expirationDate.toUTCString() + "; path=/";
+    }
+
+    // Função para definir um cookie que rastreia que o pop-up foi fechado
+    function setExitPopupClosedCookie() {
+        var expirationDate = new Date();
+        expirationDate.setFullYear(expirationDate.getFullYear() + 1); // Cookie válido por 1 ano
+        document.cookie = "exitPopupClosed=true; expires=" + expirationDate.toUTCString() + "; path=/";
+    }
+
+    // Função para verificar se o pop-up foi fechado anteriormente
+    function hasExitPopupClosedCookie() {
+        return document.cookie.indexOf("exitPopupClosed=true") !== -1;
+    }
+
+    // Evento de intenção de saída
+    document.addEventListener("mouseleave", function (event) {
+        if (event.clientY < 0 && !hasExitPopupCookie() && !hasExitPopupClosedCookie()) {
+            showExitPopup();
+        }
+    });
+
+    // Adicione um ouvinte de evento de envio ao formulário
+    var exitPopupForm = document.getElementById("exit-popup-form");
+    exitPopupForm.addEventListener("submit", function (event) {
+        // Impedir o envio padrão do formulário
+        event.preventDefault();
+        // Fechar o pop-up após o envio bem-sucedido
+        closeExitPopup();
+        // Definir o cookie para indicar que o pop-up foi exibido
+        setExitPopupCookie();
+    });
+
+    // Verifique se o pop-up já foi exibido ou fechado quando a página carregar
+    window.addEventListener("load", function () {
+        if (hasExitPopupCookie() || hasExitPopupClosedCookie()) {
+            closeExitPopup();
+        }
+    });
+</script>
+
