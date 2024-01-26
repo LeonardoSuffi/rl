@@ -1,0 +1,195 @@
+
+<style>
+  #msg a{
+  width: 100% !important;
+  background: #82a002 !important;
+transition: 1s;
+transform: translatey(0);
+  border: none;
+  padding: 14px !important;
+  cursor: pointer;
+  border: none !important;
+  color: #FEFFE5 !important;
+    font-weight: 600 !important;
+text-transform: uppercase;
+font-size: 15px !important;
+letter-spacing: 2px;
+    border-style: solid !important;
+border-width: 1px 1px 1px 1px !important;
+border-color: #A4CE3A !important;
+border-radius: 0px 0px 0px 0px !important;
+}
+    #msg a:hover {
+    background: #d3f328 !important;
+transform: translatey(-5px);
+color: #46580F !important;
+}
+
+#msg p{
+  color:#f6f6f6;
+  font-size: 20px;
+  font-weight: 600;
+}
+#msg{
+ background: transparent;
+border: 1px solid #e5fc5a;
+  padding: 36px;
+  width: 450px;
+ gap: 20px;
+}
+.efeito-vidro {
+background: rgba( 255, 255, 255, 0.08 );
+box-shadow: 0 8px 32px 0 rgba( 0, 0, 0, 0.37 );
+backdrop-filter: blur( 3.5px );
+-webkit-backdrop-filter: blur( 3.5px );
+border: 1px solid rgba( 255, 255, 255, 0.2 );
+}
+
+body {
+  font-family: 'Catamaran', sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+form {
+    background: #feffe5;
+border: 1px solid #e5fc5a;
+  padding: 36px;
+  width: 450px;
+ gap: 20px;
+}
+
+label {
+    color: #fff;
+    font-weight: 500;
+  display: block;
+  margin-bottom: 2px;
+  
+}
+
+input {
+  color: #fff;
+  width: 100%;
+  padding: 6px !important;
+  margin-bottom: 16px;
+  background: transparent;
+  border-radius: 0px !important;
+  border: none !important;
+  border-bottom:1px solid #ffffff80 !important;
+  outline: none !important;
+  font-size: 18px;
+}
+
+ input:focus, input:hover {
+    border-color: #d3f328 !important;
+ }
+ 
+button {
+  width: 100% !important;
+  background: #82a002 !important;
+transition: 1s;
+transform: translatey(0);
+  border: none;
+  padding: 14px !important;
+  cursor: pointer;
+  border: none !important;
+  color: #FEFFE5 !important;
+    font-weight: 600 !important;
+text-transform: uppercase;
+font-size: 1.3rem !important;
+letter-spacing: 2px;
+    border-style: solid !important;
+border-width: 1px 1px 1px 1px !important;
+border-color: #A4CE3A !important;
+border-radius: 0px 0px 0px 0px !important;
+}
+
+.btn:hover {
+    background: #d3f328 !important;
+transform: translatey(-5px);
+color: #46580F !important;
+}
+
+#txt{
+color: #FFFFFF;
+font-family: "Catamaran", Sans-serif;
+font-weight: 400;
+font-size: 1.5rem;
+text-align: center;
+}
+
+ #name1 {
+    margin-top: 24px;
+}
+
+@media screen and (max-width: 1024px){
+    form {
+  padding: 10px;
+  width: 100%;
+}
+}
+
+@media screen and (max-width: 767px){
+    form {
+  padding: 10px;
+  width: 100%;
+}
+}
+</style>
+
+<form class="efeito-vidro" id="contactForm">
+<h4 id="txt">Calcule qual valor que você irá receber com a venda do crédito de carbono com a área de mata parada.</h4>
+
+<label for="name">Nome:</label>
+<input type="text" id="name" name="name" required>
+
+<label for="email">E-mail:</label>
+<input type="email" id="email" name="email" required>
+
+<label for="phone">Telefone:</label>
+<input type="text" id="phone" name="phone" maxlength="15" required>
+
+<label for="tamanho">Hectares:</label>
+<input type="number" name="tamanho" id="tamanho" required>
+
+<button class="btn" type="submit">Calcular Rendimento</button>
+</form>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.js"></script>
+<script>
+$(document).ready(function () {
+$("#phone").mask("(00) 00000-0000");
+});
+</script>
+
+<div id="msg" style="display:none;">
+<p></p>
+<a href="#">Fale agora com um representante</a>
+</div>
+
+
+<script>
+  document.querySelector('#contactForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    var tamanho = document.querySelector("#tamanho").value;
+    var valorC = calcularRendimento(tamanho);
+    var valorR = calcularLucro(valorC);
+
+    document.querySelector('#contactForm').style.display = 'none';
+    document.querySelector('#msg').style.display = 'block';
+
+    document.querySelector('#msg p').innerHTML = "Com uma propriedade de <span style='color: #A4CE3A;'>" + tamanho + " hectares</span>, pode gerar até <span style='color: #A4CE3A;'>" + valorC + " em CRÉDITO DE CARBONO</span>.<br>Esse crédito de carbono te da um lucro de <span style='color: #A4CE3A;'>R$" + valorR.toFixed(2) + " anualmente</span>.";
+  });
+
+  function calcularRendimento(tamanho) {
+    return tamanho * 30;
+  }
+
+  function calcularLucro(valorC) {
+    return valorC * 25.00 * 12;
+  }
+</script>

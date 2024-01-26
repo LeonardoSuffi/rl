@@ -1,0 +1,177 @@
+<!-- Adicione os links para a biblioteca Slick Carousel -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+<!-- Adicione suas estilizações personalizadas -->
+<style>
+
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .box {
+        width: 49%; /* Para manter uma pequena lacuna entre as divs */
+        margin-bottom: 20px;
+        background: #feffe5;
+        padding: 20px 40px 20px;
+        border: 1px solid #e5fc5a;
+    }
+    .box2 {
+        width: 100%; /* Para manter uma pequena lacuna entre as divs */
+        margin-bottom: 20px;
+        background: #82a002;
+        padding: 20px 40px 40px;
+        border: 1px solid #e5fc5a;
+    }
+
+    .txt2, .txt4 {
+        text-align: left;
+    }
+    
+    .txt2{
+        
+    }
+    
+    .txt4{
+        font-weight: 400;
+font-family: "Montserrat",sans-serif;
+color: #46580f;
+font-size: 14px;
+line-height: 150%;
+box-sizing: border-box;
+padding: 0px;
+margin: 0px;
+    }
+
+.btn2{
+background: #82a002;
+transition: 1s;
+transform: translatey(0);
+font-family: "Montserrat", Sans-serif;
+font-weight: 600;
+letter-spacing: 1px;
+fill: #FEFFE5;
+color: #FEFFE5;
+background-color: #82A002;
+border-style: solid;
+border-width: 1px 1px 1px 1px;
+border-color: #A4CE3A;
+border-radius: 0px 0px 0px 0px;
+padding: 12px 24px;
+}
+
+.btn2:hover{
+background: #d3f328 !important;
+transform: translatey(-5px);
+}
+
+
+.txt5{
+color: #253102;
+font-family: "Montserrat", Sans-serif;
+font-weight: 600;
+font-size: 20px;
+}
+
+@media (max-width: 767px) {
+        .container {
+            width: 100%;
+            flex-wrap: nowrap;
+            overflow: hidden;
+        }
+
+        .box {
+            flex: 0 0 auto;
+            width: 100;
+            height: 410px;
+            margin-right: 10px; /* Adapte conforme necessário */
+        padding: 40px 20px;
+        }
+        
+        .box2 {
+            flex: 0 0 auto;
+            width: auto;
+            height: 410px;
+            margin-right: 10px; /* Adapte conforme necessário */
+        padding: 20px;
+        }
+        
+        .slick-dots {
+            bottom: -2px;
+    }
+    
+    .slick-dots li.slick-active button:before {
+font-size: 14px;
+color: #d3f328;
+}
+
+[type=button]:focus,[type=button]:hover,[type=submit]:focus,[type=submit]:hover,button:focus,button:hover {
+color: #fff;
+background-color: transparent;
+text-decoration: none
+}
+    
+        .btn2-txt{
+            font-size: 14px;
+        }
+}
+</style>
+
+<div class="container">
+    <div class="box">
+        <h2 class="txt2">Etapa 1</h2>
+        <h4 class="txt4">De um lado temos as empresas, que através de seus processos industriais, veículos e outras atividades poluem o meio ambiente através da emissão de uma grande quantidade de gás carbônico (CO2).</h4>
+    </div>
+
+    <div class="box">
+        <h2 class="txt2">Etapa 2</h2>
+        <h4 class="txt4">Do outro lado, temos os produtores rurais que desempenham um papel fundamental na preservação do meio ambiente ao manterem de pé suas áreas de mata através de Reservas Legais e APP’s. Áreas de mata que em seu processo natural, ajudam a absorver todos os gases poluentes (CO2) que são emitidos pelas empresas.</h4>
+    </div>
+
+    <div class="box">
+        <h2 class="txt2">Etapa 3</h2>
+        <h4 class="txt4">Então, para compensar o produtor que mantém sua área de mata em pé e ao mesmo tempo controlar as emissões de gás carbônico produzido pelas empresas, existe o mercado de Crédito de Carbono. O conceito por trás do crédito de carbono é simples: os produtores rurais recebem créditos proporcionais à quantidade de carbono que suas áreas de mata são capazes de absorver, e esses créditos podem ser vendidos no mercado.</h4>
+    </div>
+
+    <div class="box">
+        <h2 class="txt2">Etapa 4</h2>
+        <h4 class="txt4">Em sua grande parte, este mercado ocorre através da compra e venda dos créditos de carbono entre produtores rurais e empresas poluentes! As empresas, ao adquirir esses créditos, compensam parte de suas emissões, enquanto os produtores rurais são recompensados financeiramente por manterem de pé o mato que desde sempre foi obrigado a preservar.</h4>
+    </div>
+
+    <div class="box2">
+        <h4 class="txt4" style="color: #feffe5">Resumindo, os Créditos de Carbono são como moedas que a sua fazenda ganha e pode vendê-las para empresas que precisam.
+<br><br>
+Sem nenhum esforço a mais, a geração e venda dos créditos de carbono através da sua área de mata, pode ser uma fonte de renda extra para expandir sua fazenda e aumentar o lucro DOS SEUS NEGÓCIOS!</h4>
+<h2 class="txt5">Faça uma chamada gratuita agora com um especialista da nossa empresa.</h2>
+<a class="btn2" href="#">
+<span class="btn2-txt">FALAR COM CONSULTOR</span>
+</a>
+    </div>
+</div>
+
+<!-- Adicione o script do Slick Carousel apenas para dispositivos móveis -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script>
+    // Inicialize o Slick Carousel apenas para dispositivos móveis
+    $(document).ready(function(){
+        if (window.innerWidth <= 767) {
+            $('.container').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                infinite: false,
+                dots: true,
+                responsive: [
+                    {
+                        breakpoint: 767,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1,
+                        }
+                    }
+                ]
+            });
+        }
+    });
+</script>
