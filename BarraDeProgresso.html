@@ -1,0 +1,91 @@
+<div class="elementor-widget-container" style="
+    display: flex;
+    justify-content: center;
+"><style>
+.progress-bar-container {
+    position: absolute;
+    top: 60px;
+    z-index: 0;
+    width: 870px;
+    height: 12px;
+    background-color: #adb5bd80;
+    box-shadow: 7px 5px 56px -14px #ffdf41;
+    overflow: hidden;
+    opacity: 0; /* Inicialmente, torna a barra de progresso invisível */
+    transition: opacity 0.5s ease;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(45deg, #ff095c 0%, #F09819  0%, #ff6100  100%);
+    background-size: 400% 400%;
+ box-shadow: 7px 5px 56px -14px #ffdf41;
+    transition: width 2s ease-out;
+    animation: gradient 5s ease infinite;
+}
+
+@keyframes gradient {
+    0%{background-position:0% 88%}
+    50%{background-position:100% 13%}
+    100%{background-position:0% 88%}
+}
+
+@media (max-width: 1024px){
+    .progress-bar-container {
+        top: 100px;
+        width: 500px;
+    }
+}
+
+@media (max-width: 767px){
+    .progress-bar-container {
+    display: none;
+    }
+}
+
+</style>
+
+    <div class="progress-bar-container" id="progressContainer">
+        <div class="progress-bar" id="progress"></div>
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const progressBarContainer = document.getElementById('progressContainer');
+    const progressBar = document.getElementById('progress');
+    const steps = 3; // 100% / 25% = 4 steps
+    let currentStep = 1;
+    let isProgressBarVisible = false;
+
+    function updateProgressBar() {
+        const progressWidth = (currentStep / steps) * 100 + '%';
+        progressBar.style.width = progressWidth;
+    }
+
+    function checkVisibility() {
+        const rect = progressBarContainer.getBoundingClientRect();
+        const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+
+        // Verifica se a barra de progresso está visível na janela de visualização
+        if (rect.top < windowHeight && !isProgressBarVisible) {
+            isProgressBarVisible = true;
+            progressBarContainer.style.opacity = 1; // Torna a barra de progresso visível
+            // Inicia a simulação de carregamento de 25% a cada segundo
+            setInterval(function () {
+                if (currentStep <= steps) {
+                    updateProgressBar();
+                    currentStep++;
+                }
+            }, 1000);
+        }
+    }
+
+    // Adiciona um ouvinte de evento de rolagem para verificar a visibilidade da barra de progresso
+    window.addEventListener('scroll', checkVisibility);
+
+    // Verifica a visibilidade inicialmente
+    checkVisibility();
+});
+</script>
+</div>
