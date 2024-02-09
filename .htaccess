@@ -1,0 +1,2 @@
+# Disable Directory Listing   //Isso faz com que ele nao liste o disretorios do servidor
+Options -Indexes

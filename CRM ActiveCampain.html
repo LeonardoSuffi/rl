@@ -1,0 +1,64 @@
+
+<form method="POST" action="https://fazendamaislucrativa26748.activehosted.com/proc.php" id="contactForm" novalidate data-styles-version="4">
+  <input type="hidden" name="u" value="1" />
+  <input type="hidden" name="f" value="1" />
+  <input type="hidden" name="s" />
+  <input type="hidden" name="c" value="0" />
+  <input type="hidden" name="m" value="0" />
+  <input type="hidden" name="act" value="sub" />
+  <input type="hidden" name="v" value="2" />
+  <input type="hidden" name="or" value="d4f73b6d5d79b5f3a3e7e85008afd15d" />
+
+  <label for="name">Nome:</label>
+  <input type="text" id="fullname" name="fullname" placeholder="Digite seu nome" required>
+  
+  <label for="email">E-mail:</label>
+  <input type="email" id="email" name="email" placeholder="Seu melhor e-mail" required>
+  
+  <label for="phone">Telefone:</label>
+  <input type="text" id="phone" name="phone" maxlength="15" placeholder="(00) 90000-0000" required>
+  
+  <label for="field[10]">Estado:</label>
+  <select name="field[10]" id="field[10]" required>
+      <option value="">selecione
+      </option>
+      <option value="Acre - AC" >
+        Acre - AC
+      </option>
+    </select>
+  
+  <label for="tamanho">Hectares de mata:</label>
+  <input type="number" name="field[5]" id="field[5]" class="tamanho" placeholder="Aréa de mata" required>
+  
+  <button class="btn" id="sub" type="submit">Calcular Rendimento</button>
+  </form>
+
+
+<script type="text/javascript">
+  (function() {
+  var form_to_submit = document.getElementById('contactForm');
+  var form_submit = function(e) {
+    e.preventDefault();
+    var submitButton = e.target.querySelector('#sub');
+    submitButton.disabled = true;
+    submitButton.classList.add('processing');
+    var formData = new FormData(form_to_submit);
+    fetch('https://fazendamaislucrativa26748.activehosted.com/proc.php?jsonp=true', {
+      headers: {
+        "Accept": "application/json"
+      },
+      body: formData,
+      method: "POST"
+    })
+    .then(response => response.json())
+    .then(data => {
+      eval(data.js);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+    return false;
+  };
+  form_to_submit.addEventListener('submit', form_submit);
+  })();
+  </script>

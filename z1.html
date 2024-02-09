@@ -1,0 +1,83 @@
+<form id="btoi">
+  <input type="text" id="nome" placeholder="Seu Nome" name="name" required>
+  <input type="text" id="tel" placeholder="DDD+Telefone" name="tel" required>
+  <input type="email" id="email" placeholder="Seu E-mail" name="email" required>
+  <button id="sub1">Receber uma Oferta no meu Carro</button>
+  </form>
+  <script>
+function getParameterByName(name) {
+  name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+  let regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+    results = regex.exec(location.search);
+  return results === null
+    ? ""
+    : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+const form = document.querySelector("#btoi");
+form.addEventListener('submit', function (event) {
+  event.preventDefault();
+  const nome = document.getElementById('nome').value;
+  const tel = document.getElementById('tel').value;
+  const email = document.getElementById('email').value;
+  let utm_source = getParameterByName("utm_source");
+  let utm_medium = getParameterByName("utm_medium");
+  let utm_campaign = getParameterByName("utm_campaign");
+  let utm_term = getParameterByName("utm_term");
+  let utm_content = getParameterByName("utm_content");
+  let utm_position = getParameterByName("utm_position");
+  let utm_device = getParameterByName("utm_device");
+  let utm_match = getParameterByName("utm_match");
+  let utm_creative = getParameterByName("utm_creative");
+
+  const formData = {
+    event_type: 'CONVERSION',
+    event_family: 'CDP',
+    payload: {
+      conversion_identifier: 'Licenciamentos',
+      name: nome,
+      email: email,
+      job_title: '',
+      state: '',
+      city: '',
+      country: '',
+      personal_phone: tel,
+      mobile_phone: tel,
+      twitter: '',
+      facebook: '',
+      linkedin: '',
+      website: '',
+      cf_custom_field_name: '',
+      company_name: '',
+      company_site: '',
+      company_address: '',
+      client_tracking_id: '',
+      traffic_source: 'utm_source',
+      traffic_medium: 'utm_medium',
+      traffic_campaign: 'utm_campaign',
+      traffic_value: '',
+      tags: ['RL'],
+      available_for_mailing: true,
+      legal_bases: [{ category: 'communications', type: 'consent', status: 'granted' }],
+    },
+  };
+
+  const options = {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(formData),
+  };
+
+  fetch('https://api.rd.services/platform/conversions?api_key=817f13f8d97961acfcf399e4a3260e8b', options)
+    .then(response => response.json())
+    .then(response => console.log(response))
+    .catch(err => console.error(err));
+    window.location.href = 'https://teste.com.br/obrigado/';
+});
+});
+
+  </script>

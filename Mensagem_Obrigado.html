@@ -12,3 +12,56 @@ document.querySelector('#contactForm').addEventListener('submit', function(event
 
 });
 </script>
+
+
+
+<div id="msg" class="show" style="display:none;">
+  <p class="thanks">Obrigado <span class="heart">&hearts;</span></p>
+  <p class="message">Agradecemos por seu cadastro. Em instatntes entraremos em contato!<br> Caso Possua alguma dúvida entre direto em nosso WhatsApp</p><button class="button b1" id="wt1">
+  <i class="fi fi-rs-car-alt" style="margin-right: 6px;"></i>
+  <span>Falar Pelo whatsapp</span></button>
+</div>
+<style>
+#msg {
+    display: none;
+    color: white;
+    padding: 20px;
+    width: 75%;
+    border-radius: 10px;
+    margin-top: 20px;
+    text-align: center;
+    box-shadow: 0px 0px 20px -5px #f09819;
+}
+
+#msg p {
+    margin: 0; /* Remover a margem padrão do parágrafo */
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#msg.show {
+    display: block;
+}
+
+#msg .heart {
+    color: #ff095c;
+    font-size: 24px;
+    margin: 0 5px;
+    vertical-align: middle;
+}
+
+#msg .thanks {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#msg .message {
+    font-size: 16px;
+}
+@media (max-width: 767px){
+    #msg{
+        width:100%;
+    }
+}
+</style>
