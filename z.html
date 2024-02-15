@@ -1,0 +1,76 @@
+ <script>
+        document.addEventListener("DOMContentLoaded", function() {
+        document.querySelector('#contactForm').addEventListener('submit', function(event) {
+
+          var tamanho = document.querySelector(".tamanho").value;
+
+          if (tamanho < 100) {
+                alert("O tamanho da área de mata deve ser maior que 100 hectares.");
+                event.preventDefault();
+                return;
+            }
+
+          event.preventDefault();
+
+          var valorC = calcularRendimento(tamanho);
+          var valorR = calcularLucro(valorC);
+      
+          document.querySelector('#contactForm').style.display = 'none';
+          document.querySelector('#msg').style.display = 'block';
+           
+      
+          document.querySelector('#credito').innerHTML = valorC;
+          document.querySelector('#faturamento').innerHTML = "R$" + valorR.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      
+          document.querySelector('#msg p').innerHTML = "Com uma propriedade de <span style='color: #A4CE3A;'>" + tamanho + " hectares de mata</span>, você pode gerar até <span style='color: #A4CE3A;'>" + valorC + " em CRÉDITO DE CARBONO</span>.<br>Esse crédito de carbono rende até <span style='color: #A4CE3A;'>R$" + valorR.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + "</span> anualmente.";
+        });
+      
+        function calcularRendimento(tamanho) {
+          return tamanho * 5;
+        }
+      
+        function calcularLucro(valorC) {
+          return valorC * 50.00;
+        }
+  
+  
+      });
+      </script>
+  
+  
+  <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function() {
+      (function() {
+      var form_to_submit = document.getElementById('contactForm');
+      var form_submit = function(e) {
+        var tamanho = document.querySelector(".tamanho").value;
+
+        if (tamanho < 100) {
+            e.preventDefault();
+            return;
+        }
+        e.preventDefault();
+        var submitButton = e.target.querySelector('#sub');
+        submitButton.disabled = true;
+        submitButton.classList.add('processing');
+        var formData = new FormData(form_to_submit);
+        fetch('https://fazendamaislucrativa26748.activehosted.com/proc.php?jsonp=true', {
+          headers: {
+            "Accept": "application/json"
+          },
+          body: formData,
+          method: "POST"
+        })
+        .then(response => response.json())
+        .then(data => {
+          eval(data.js);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+        return false;
+      };
+      form_to_submit.addEventListener('submit', form_submit);
+      })();
+    });
+      </script>

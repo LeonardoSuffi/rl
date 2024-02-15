@@ -1,0 +1,128 @@
+<style>
+
+    .cards img {
+        margin: 10px;
+    }
+    
+    .cards {
+      display: grid;
+      place-items: center;
+    }
+    
+    .outer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .cards .card {
+      max-width: 30rem;
+      border-radius: 0.5rem;
+      position: absolute;
+      pointer-events: none;
+      opacity: 0;
+      animation: animate 15s infinite linear;
+      animation-delay: calc(3s * var(--delay));
+    }
+    
+    .profile,
+    .header {
+      display: flex;
+      align-items: center;
+    }
+    .header {
+      justify-content: space-between;
+    }
+    .profile {
+      margin-bottom: 0.5rem;
+    }
+    
+    .profile .details {
+      margin-left: 10px;
+    }
+    .op-star {
+      color: #28223f;
+      font-size: 1.1rem;
+    }
+    
+    .outer:hover .card {
+      animation-play-state: paused;
+    }
+    .cards .card:last-child {
+      animation-delay: calc(-3s * var(--delay));
+    }
+    
+    @keyframes animate {
+      0% {
+        opacity: 0;
+        transform: translateY(100%) scale(0.9);
+      }
+      5%,
+      20% {
+        opacity: 0.7;
+        transform: translateY(100%) scale(1);
+      }
+      25%,
+      40% {
+        opacity: 1;
+        pointer-events: all;
+        transform: translateY(0%) scale(1.1);
+      }
+      45%,
+      60% {
+        opacity: 0.7;
+        transform: translateY(-100%) scale(1);
+      }
+      65%,
+      100% {
+        opacity: 0;
+        transform: translateY(-100%) scale(0.9);
+      }
+    }
+    
+    @media (max-width: 467px) {
+      /*Edited*/
+      .card {
+        font-size: 10px;
+        padding: 0.5rem !important;
+        margin: 0.5rem;
+        text-align: center;
+      }
+      .header,
+      .profile {
+        flex-direction: column;
+        margin-bottom: 0.5rem;
+      }
+    }
+    
+    </style>
+        <link
+          href="https://cdn.jsdelivr.net/gh/codeOpacity/op_icons@main/op_icons.all.min.css"
+          rel="stylesheet"
+        />
+        <link rel="stylesheet" href="./style.css" />
+      </head>
+      <body>
+        <div class="cards">
+          <div class="outer">
+            <div class="card" style="--delay: -1;">
+                <img src="https://pachecoeadvogados.com.br/revisional/wp-content/uploads/2023/11/comments-8.png" alt="coment" width="490" height="auto">
+            </div>
+            <div class="card" style="--delay: 0;">
+                <img src="https://pachecoeadvogados.com.br/revisional/wp-content/uploads/2023/11/comments-9.png" alt="coment" width="490" height="auto">
+            </div>
+            <div class="card" style="--delay: 1;">
+                <img src="https://pachecoeadvogados.com.br/revisional/wp-content/uploads/2023/11/comments-10.png" alt="coment" width="490" height="auto">
+            </div>
+            <div class="card" style="--delay: 2;">
+                <img src="https://pachecoeadvogados.com.br/revisional/wp-content/uploads/2023/11/comments-12.png" alt="coment" width="490" height="auto">
+            </div>
+            <div class="card" style="--delay: 2;">
+                <img src="https://pachecoeadvogados.com.br/revisional/wp-content/uploads/2023/11/comments-11.png" alt="coment" width="490" height="auto">
+            </div>
+          </div>
+        </div>
+    
+      </body>
+    </html>
+    
