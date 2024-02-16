@@ -1,76 +1,19 @@
- <script>
-        document.addEventListener("DOMContentLoaded", function() {
-        document.querySelector('#contactForm').addEventListener('submit', function(event) {
+<link href="https://fonts.googleapis.com/css2?family=Neo+Sans" rel="stylesheet">
 
-          var tamanho = document.querySelector(".tamanho").value;
-
-          if (tamanho < 100) {
-                alert("O tamanho da área de mata deve ser maior que 100 hectares.");
-                event.preventDefault();
-                return;
-            }
-
-          event.preventDefault();
-
-          var valorC = calcularRendimento(tamanho);
-          var valorR = calcularLucro(valorC);
-      
-          document.querySelector('#contactForm').style.display = 'none';
-          document.querySelector('#msg').style.display = 'block';
-           
-      
-          document.querySelector('#credito').innerHTML = valorC;
-          document.querySelector('#faturamento').innerHTML = "R$" + valorR.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-      
-          document.querySelector('#msg p').innerHTML = "Com uma propriedade de <span style='color: #A4CE3A;'>" + tamanho + " hectares de mata</span>, você pode gerar até <span style='color: #A4CE3A;'>" + valorC + " em CRÉDITO DE CARBONO</span>.<br>Esse crédito de carbono rende até <span style='color: #A4CE3A;'>R$" + valorR.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + "</span> anualmente.";
-        });
-      
-        function calcularRendimento(tamanho) {
-          return tamanho * 5;
-        }
-      
-        function calcularLucro(valorC) {
-          return valorC * 50.00;
-        }
-  
-  
-      });
-      </script>
-  
-  
-  <script type="text/javascript">
-    document.addEventListener("DOMContentLoaded", function() {
-      (function() {
-      var form_to_submit = document.getElementById('contactForm');
-      var form_submit = function(e) {
-        var tamanho = document.querySelector(".tamanho").value;
-
-        if (tamanho < 100) {
-            e.preventDefault();
-            return;
-        }
-        e.preventDefault();
-        var submitButton = e.target.querySelector('#sub');
-        submitButton.disabled = true;
-        submitButton.classList.add('processing');
-        var formData = new FormData(form_to_submit);
-        fetch('https://fazendamaislucrativa26748.activehosted.com/proc.php?jsonp=true', {
-          headers: {
-            "Accept": "application/json"
-          },
-          body: formData,
-          method: "POST"
-        })
-        .then(response => response.json())
-        .then(data => {
-          eval(data.js);
-        })
-        .catch(error => {
-          console.error('Error:', error);
-        });
-        return false;
-      };
-      form_to_submit.addEventListener('submit', form_submit);
-      })();
-    });
-      </script>
+<div style="width: 600px; margin: 0 auto; background-color: #002d75; background-image: url('https://ambiparlogtech.com/flex/wp-content/uploads/2024/01/ambipar-cargo-footer-background.png'); background-size: contain; background-repeat: no-repeat; border-radius: 10px; background-position: center bottom; padding: 20px;font-family: Arial, sans-serif;"><img alt="SouNet" src="https://ambiparlogtech.com/flex/wp-content/uploads/2024/01/AmbiparLogtechbranco-Otimizada.png" width="200px" />
+	<h1 style="text-align: center; color:#fff;"><span style="font-size:18px;">AGRADECEMOS A SUA INSCRIÇÃO</span></h1>
+	
+	<div style="background-color: #0000009c; padding: 10px;">
+	<p dir="ltr" style="line-height:1.3800000000000001;margin-top:15pt;margin-bottom:15pt;"><strong><span style="font-size:20px;"><span id="docs-internal-guid-9d10c87c-7fff-5653-d6ed2-facae740ddff"><span style="font-family: 'Neo Sans', sans-serif; color: #f6f6f6; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-variant-position: normal; vertical-align: baseline; white-space-collapse: preserve;">Olá, [NOME DO LEAD]!</span></span></span></strong></p>
+	
+	<p dir="ltr" style="line-height:1.3800000000000001;margin-top:15pt;margin-bottom:15pt;"><span id="docs-internal-guid-9d10c87c-7fff-5653-d6e2-facae740ddff"><span style="font-size: 18px; font-family: 'Neo Sans', sans-serif; font-weight: 500; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-variant-position: normal; color: #f6f6f6; vertical-align: baseline; white-space-collapse: preserve;">É com grande satisfação que a equipe da Ambipar Logtech dá as boas-vindas a você e expressa nossa alegria pelo seu interesse em participar do nosso Webinar. Esteja atento(a) aos nossos e-mails para mais informações e atualizações.<br><br>Agradecemos imensamente pela oportunidade de nos conectarmos com você e pela sua disposição em explorar o universo da logística de frota com a Ambipar Logtech.<br><br>Não se esqueça de marcar em sua agenda: nosso Webinar está marcado para o dia 23/02/2024 às 19:30. Logo compartilharemos o link por e-mail para acesso.</span></div>
+<br>
+	<span style="color: rgb(255, 255, 255); font-family: Arial, sans-serif;">Ambipar Logtech</span><br style="color: rgb(255, 255, 255); font-family: Arial, sans-serif;" />
+	<span style="color: rgb(255, 255, 255); font-family: Arial, sans-serif;">Com Mireli Bueno</span><br />
+	&nbsp;
+	<div style="background-color: rgb(176, 209, 12, .9); border: 1px solid rgb(176, 209, 12, .9); color: #000000; text-align: center; padding: 10px;">
+	<p style="font-size: 10px;">Voc&ecirc; est&aacute; recebendo este e-mail porque visitou nosso site.<br />
+	Certifique-se de que nossas mensagens cheguem &agrave; sua caixa de entrada (e n&atilde;o &agrave;s suas pastas em massa ou lixo eletr&ocirc;nico).</p>
+	<a href="https://ambipar.com/politicas/Politica-de-Privacidade-e-Protecao-de-Dados-Pessoais" style="font-size:8px; color: #000000;">TERMOS DE USO E POL&Iacute;TICA DE PRIVACIDADE</a> | <a href="https://ambiparlogtech.com/" style="font-size:8px; color: #000000;">POLITICA DE CANCELAMENTO</a></div>
+	</div>
+	

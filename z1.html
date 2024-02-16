@@ -1,0 +1,112 @@
+<div id="content" class="col-sm-9">
+  <h1>Cadastre sua conta</h1>
+  <p>Se você já tem uma conta em nossa loja, acesse sua conta <a href="https://www.balaoessencias.com.br/index.php?route=account/login">clicando aqui</a>.</p>
+  <form action="https://www.balaoessencias.com.br/index.php?route=account/register" method="post" enctype="multipart/form-data" class="form-horizontal"><input type="hidden" name="__csrf" value="e4dfe45c7824c75c9170282f977af6dd8b422c11">
+
+    <fieldset id="account">
+      <legend>Seus dados de contato</legend>
+      <div id="custom-field1" class="form-group custom-field required" data-sort="1" style="display: block;">
+        <label class="col-sm-2 control-label" for="input-custom-field1">CPF/CNPJ</label>
+        <div class="col-sm-10">
+          <input type="text" name="custom_field[account][1]" value="" placeholder="CPF/CNPJ" id="input-custom-field1" class="form-control">
+                      </div>
+      </div><div class="form-group required" style="display:  none ;">
+        <label class="col-sm-2 control-label">Comprar como</label>
+        <div class="col-sm-10">                            <div class="radio">
+            <label>
+              <input type="radio" name="customer_group_id" value="1" checked="checked">
+              Padrão
+            </label>
+          </div>
+                                    </div>
+      </div>
+      <div class="form-group required">
+        <label class="col-sm-2 control-label" for="input-firstname">Nome</label>
+        <div class="col-sm-10">
+          <input type="text" name="firstname" value="" placeholder="Nome" id="input-firstname" class="form-control">
+                      </div>
+      </div>
+      <div class="form-group required">
+        <label class="col-sm-2 control-label" for="input-lastname">Sobrenome</label>
+        <div class="col-sm-10">
+          <input type="text" name="lastname" value="" placeholder="Sobrenome" id="input-lastname" class="form-control">
+                      </div>
+      </div>
+      <div class="form-group required">
+        <label class="col-sm-2 control-label" for="input-email">E-mail</label>
+        <div class="col-sm-10">
+          <input type="email" name="email" value="" placeholder="E-mail" id="input-email" class="form-control">
+                      </div>
+      </div>
+      <div class="form-group required">
+        <label class="col-sm-2 control-label" for="input-telephone">Telefone</label>
+        <div class="col-sm-10">
+          <input type="tel" name="telephone" value="" placeholder="Telefone" id="input-telephone" class="form-control">
+                      </div>
+      </div>
+                                                        
+                                                                          </fieldset>
+    <fieldset>
+      <legend>Sua senha de acesso</legend>
+      <div class="form-group required">
+        <label class="col-sm-2 control-label" for="input-password">Senha</label>
+        <div class="col-sm-10">
+          <div class="input-group">
+            <input type="password" name="password" value="" placeholder="Senha" id="input-password" class="form-control">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button" onclick="$('#input-password').attr('type') === 'password' ? $('#input-password').attr('type', 'text') : $('#input-password').attr('type', 'password'); $('#toggle-password').toggleClass('fa-eye fa-eye-slash');"><i id="toggle-password" class="fa fa-eye-slash"></i></button>
+            </span>
+          </div>
+                      </div>
+      </div>
+      <div class="form-group required">
+        <label class="col-sm-2 control-label" for="input-confirm">Repetir a senha</label>
+        <div class="col-sm-10">
+          <div class="input-group">
+            <input type="password" name="confirm" value="" placeholder="Repetir a senha" id="input-confirm" class="form-control">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button" onclick="$('#input-confirm').attr('type') === 'password' ? $('#input-confirm').attr('type', 'text') : $('#input-confirm').attr('type', 'password'); $('#toggle-confirm').toggleClass('fa-eye fa-eye-slash');"><i id="toggle-confirm" class="fa fa-eye-slash"></i></button>
+            </span>
+          </div>
+                      </div>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Assine nosso informativo e receba novidades e promoções</legend>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Deseja assinar?</label>
+        <div class="col-sm-10">               <label class="radio-inline">
+            <input type="radio" name="newsletter" value="1">
+            Sim
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="newsletter" value="0" checked="checked">
+            Não
+          </label>
+                      </div>
+      </div>
+    </fieldset>
+    <script src="https://www.hCaptcha.com/1/api.js" async="" defer=""></script>
+
+<fieldset><legend>Verificação</legend>
+<div class="form-group required">
+
+  <label class="col-sm-12 control-label">Por favor, faça a verificação</label>
+
+  <div class="col-sm-12">
+    <div class="h-captcha" data-sitekey="8fb2549b-637a-4331-bb90-bd57d91bfd01"><iframe src="https://newassets.hcaptcha.com/captcha/v1/23190cf/static/hcaptcha.html#frame=checkbox&amp;id=05mm61gr3x0w&amp;host=www.balaoessencias.com.br&amp;sentry=true&amp;reportapi=https%3A%2F%2Faccounts.hcaptcha.com&amp;recaptchacompat=true&amp;custom=false&amp;hl=pt-BR&amp;tplinks=on&amp;pstissuer=https%3A%2F%2Fpst-issuer.hcaptcha.com&amp;sitekey=8fb2549b-637a-4331-bb90-bd57d91bfd01&amp;theme=light&amp;origin=https%3A%2F%2Fwww.balaoessencias.com.br" tabindex="0" frameborder="0" scrolling="no" allow="private-state-token-issuance 'src'; private-state-token-redemption 'src'" title="Widget contendo caixa de seleção para desafio de segurança hCaptcha" data-hcaptcha-widget-id="05mm61gr3x0w" data-hcaptcha-response="" style="pointer-events: auto; width: 303px; height: 78px; overflow: hidden;"></iframe><textarea id="g-recaptcha-response-05mm61gr3x0w" name="g-recaptcha-response" style="display: none;"></textarea><textarea id="h-captcha-response-05mm61gr3x0w" name="h-captcha-response" style="display: none;"></textarea></div>
+    
+          </div>
+  </div>
+</fieldset>
+
+            <div class="buttons">
+      <div class="pull-right">Eu li e concordo com o contrato de <a href="https://www.balaoessencias.com.br/index.php?route=information/information/agree&amp;information_id=3" class="agree"><b>Política de privacidade</b></a>
+                    <input type="checkbox" name="agree" value="1">
+                    &nbsp;
+        <input type="submit" value="Continuar" class="btn btn-primary">
+      </div>
+    </div>
+          </form>
+  
+</div>
