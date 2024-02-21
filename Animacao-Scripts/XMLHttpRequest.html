@@ -1,0 +1,27 @@
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Função para lidar com a submissão do formulário
+      document.getElementById("myForm").addEventListener("submit", function(event) {
+        // Evitar o comportamento padrão de enviar o formulário
+        event.preventDefault();
+        // Obter os dados do formulário
+        var formData = new FormData(this);
+        // Criar uma nova requisição AJAX
+        var xhr = new XMLHttpRequest();
+        // Configurar a requisição
+        xhr.open("POST", "z.php", true);
+        // Configurar a função de callback quando a requisição estiver concluída
+        xhr.onload = function() {
+          if (xhr.status >= 200 && xhr.status < 300) {
+            // Sucesso, fazer algo com a resposta
+            console.log(xhr.responseText);
+          } else {
+            // Erro, lidar com o erro
+            console.error('Erro ao enviar requisição: ' + xhr.status);
+          }
+        };
+        // Enviar a requisição com os dados do formulário
+        xhr.send(formData);
+      });
+    });
+    </script>
