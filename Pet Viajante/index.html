@@ -1,0 +1,44 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Teste de Webhook</title>
+    </head>
+    <body>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11429071021"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-11429071021');
+    </script>
+    
+    <!-- Script para enviar o payload JSON -->
+    <script>
+        // Simula o payload JSON que seria enviado pelo webhook
+        var payload = {
+            "valor": 1.0, // Valor da transação
+            "Id": {
+                "id": "1232431" // ID da transação
+            }
+        };
+    
+        // Simula uma requisição POST para o webhook com o payload JSON
+        fetch('https://petviajante.com.br/webhook.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        })
+        .then(response => response.text())
+        .then(data => console.log(data))
+        .catch(error => console.error('Erro:', error));
+    </script>
+    
+    </body>
+    </html>
+    

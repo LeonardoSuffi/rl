@@ -1,0 +1,14 @@
+document.getElementById('cpf').addEventListener('input', function (e) {
+    var cpf = e.target.value.replace(/\D/g, ''); // Remove tudo que não for dígito
+    if (cpf.length > 11) {
+        cpf = cpf.slice(0, 11); // Limita a 11 caracteres
+    }
+    if (cpf.length < 3) {
+        e.target.value = cpf;
+        return;
+    }
+    cpf = cpf.replace(/^(\d{3})(\d)/, '$1.$2'); // Coloca ponto após os primeiros três dígitos
+    cpf = cpf.replace(/^(\d{3})\.(\d{3})(\d)/, '$1.$2.$3'); // Coloca ponto após os próximos três dígitos
+    cpf = cpf.replace(/\.(\d{3})(\d)/, '.$1-$2'); // Coloca hífen após os próximos três dígitos
+    e.target.value = cpf;
+});

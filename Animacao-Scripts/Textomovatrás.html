@@ -1,0 +1,28 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+        #container {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        @keyframes moveText {
+            0% { transform: translateX(100%); }
+            50% { transform: translateX(0%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        #movingText {
+            color: #824eff50;
+            font-weight: 600;
+            font-family: "Comfortaa", sans-serif;
+            font-size: 240px;
+            display: inline-block;
+            animation: moveText 15s linear infinite; /* Tempo total da animação reduzido para 10s */
+        }
+    </style>
+
+    <div id="container">
+        <h2 id="movingText">AupolBank</h2>
+    </div>
+

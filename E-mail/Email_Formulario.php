@@ -74,20 +74,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nome = $_POST["nome"];
-    $email = $_POST["email"];
-    $tel = $_POST["tel"];
-    $destinatario = "leads@vendaseucarroagora.com.br";
-    $assunto = "$nome Formulario Site";
-    
-    $corpo = "Nome: $nome\nE-mail: $email\nWhatsApp: $tel";
-    mail($destinatario, $assunto, $corpo, "From: $email");
-    exit;
-}
-?>
-
 
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -97,7 +83,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $destinatario = "leads@vendaseucarroagora.com.br";
     $assunto = "$nome Formulario Site";
     
-    $corpo = "Nome: $nome\nE-mail: $email\nWhatsApp: $tel";
+    $corpo = "
+    Nome: $nome\n
+    E-mail: $email\n
+    WhatsApp: $tel";
     mail($destinatario, $assunto, $corpo, "From: $email");
     exit;
 }

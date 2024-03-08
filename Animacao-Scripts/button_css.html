@@ -1,0 +1,39 @@
+<!--Sobe e desce-->
+<button>teste</button>
+<style>
+    button {
+      background: linear-gradient(90deg, #8733a0, #000); /* Gradiente inicial */
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.3s ease; /* Adiciona uma transição suave para a mudança de cor */
+      animation: moveGradient 3s infinite linear; /* Adiciona a animação de movimento do gradiente */
+      background-size: 200% 100%; /* Define o tamanho do gradiente para criar o efeito de movimento */
+    } 
+    @keyframes moveGradient {
+      0% {
+        background-position: 100% 50%;
+      }
+      50% {
+        background-position: 0% 50%;
+      }
+      100% {
+        background-position: 100% 50%;
+      }
+    }
+    
+/*Flutuar*/
+button { 
+    animation-name: floating;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    margin-left: 10px;
+    margin-top: 5px;
+    }
+ 
+@keyframes floating {
+    0% { transform: translate(0,  0px); }
+    50%  { transform: translate(0, 15px); }
+    100%   { transform: translate(0, -0px); }   
+}
+</style>

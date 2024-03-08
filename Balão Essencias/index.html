@@ -1,0 +1,38 @@
+<script>
+    function textecartao() {
+      event.preventDefault();
+    let endpointHash =
+      "https://app.pipe.run/webservice/integradorJson?hash=54b6d9e9-a506-4003-973a-59ba49d3d5d4";
+  
+    function configPost(method, body) {
+      return {
+        method: method,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      };
+    }
+  
+    let rules = {
+      update: true,
+      filter_status_update: "open",
+      status: "open",
+    };
+  
+    let lead = [
+      {
+        id: "{{customer.email}}",
+        title: "{{customer.email}}",
+        last_conversion: {
+          source: "Pix Gerado",
+        },
+      },
+    ];
+  
+      let dataToSend = {
+        rules: rules,
+        leads: lead,
+      };
+        fetch(endpointHash, configPost("POST", dataToSend)).then((data) => {
+        });
+    };
+</script>

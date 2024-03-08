@@ -1,122 +1,73 @@
-[
-  {
-    "_id": {
-      "timestamp": 1708461109,
-      "date": 1708461109000
-    },
-    "telefone": "5544998059994",
-    "fields[0]_id": 545146,
-    "company_status_touch": null,
-    "company_address_street": null,
-    "company_company_situation": null,
-    "company_cnpj": null,
-    "company_logo": null,
-    "person_facebook": null,
-    "company_created_at": null,
-    "person_address_number": null,
-    "idProcess": "65d50af71b316f678b88958d",
-    "company_address_district": null,
-    "id": 33891239,
-    "origin_name": "-Formulário Site",
-    "order": null,
-    "user_avatar": "oci://account/14334/user/53823/avatar/lc9enseni4g0c0co8k0sg0ogw8kc4wg.webp",
-    "person_hash": "l2s3go3k165290rxd11rzw28oz99njz",
-    "probability": null,
-    "company_district": null,
-    "stage_id": 483209,
-    "person_data_legal_basis_processing": 1,
-    "pipeline_name": "TESTE",
-    "user_id": 53823,
-    "city_uf": null,
-    "company_name": null,
-    "person_company_name": null,
-    "company_segment_id": null,
-    "hash": "89edkrwmrcfum35duhgw1mg62gz0w1",
-    "status": 0,
-    "person_lng": null,
-    "user_name": "Leonardo RL",
-    "company_website": null,
-    "created_at": "2024-02-20 17:31:49",
-    "person_observation": null,
-    "person_gender": null,
-    "fields[0]_valores": null,
-    "person_linkedin": null,
-    "action_user": null,
-    "updated_at": "2024-02-20 17:31:49",
-    "company_city_uf": null,
-    "temperature": null,
-    "company_segment_name": null,
-    "pipeline_id": 78271,
-    "company_city_name": null,
-    "person_address_street": null,
-    "company_id": null,
-    "company_cnae": null,
-    "observation": null,
-    "company_ie": null,
-    "person_address_district": null,
-    "company_country": null,
-    "person_address_complement": null,
-    "company_lat": null,
-    "token": "f86e24e193f7cf2a1d38daa59d6c9f10e27c5f3d2120fd059efc",
-    "fields[0]_tipo": 1,
-    "deleted": 0,
-    "frozen_at": null,
-    "lost_reason_name": null,
-    "action_create": "2024-02-20T20:31:49.595292Z",
-    "person_address_postal_code": null,
-    "idPai": "",
-    "person_lgpd_declaration_accepted": false,
-    "company_company_name": null,
-    "last_contact": null,
-    "stage_name": "Novo contato",
-    "action_pipeline": "TESTE",
-    "person_data_legal_origin_id": 3,
-    "fields[0]_nome": "CPF/CNPJ",
-    "probably_closed_at": null,
-    "dataCriacao": 1708461109782,
-    "person_id": 27794443,
-    "closed_at": null,
-    "company_hash": null,
-    "fields[0]_valor": null,
-    "person_name": "leot",
-    "company_user_id": null,
-    "freezed": 0,
-    "person_rdstation": null,
-    "lost_reason_id": null,
-    "company_linkedin": null,
-    "company_observation": null,
-    "person_job_title": null,
-    "company_address_postal_code": null,
-    "company_size": null,
-    "city_id": null,
-    "person_birth_day": null,
-    "description": null,
-    "origin_id": 508527,
-    "title": "leonardo teste",
-    "company_address_number": null,
-    "person_avatar": null,
-    "person_lat": null,
-    "company_user_name": null,
-    "campanhaId": "65d4e2ddee6f1a0001fd6751",
-    "city_name": null,
-    "company_lng": null,
-    "company_segment_sector": null,
-    "lead_time": 0,
-    "company_facebook": null,
-    "person_cpf": "",
-    "company_address_complement": null,
-    "company_city_id": null,
-    "company_open_at": null,
-    "value": null,
-    "person_contact_phones[0]_id": 42184093,
-    "stage_changed_at": null,
-    "lost_reason_description": null,
-    "action_stage": "Novo contato",
-    "company_email_nf": null,
-    "person_website": null,
-    "person_contact_phones[0]_number": "5544998059994",
-    "action_trigger_type": "Uma oportunidade entrar na etapa selecionada",
-    "person_company_id": null,
-    "value_mrr": null
+<form>
+  <input type="text" id="nome" name="nome" class="input" placeholder="Nome Completo" required><br>
+  <input type="email" id="email" name="email" class="input" placeholder="E-mail" required><br>
+  <input type="tel" id="tel" name="tel" class="input" maxlength="15" minlength="13" placeholder="Telefone" required><br>
+  <label for="documento" class="label">Selecione o tipo de documento:</label><br>
+  <input type="radio" id="cnpj-radio" name="documento" value="cnpj" checked>
+  <label for="cnpj-radio">CNPJ</label>
+  <input type="radio" id="cpf-radio" name="documento" value="cpf">
+  <label for="cpf-radio">CPF</label><br>
+  <div id="cnpj-group">
+    <input type="text" id="cnpj" name="cnpj" class="input" placeholder="CNPJ">
+  </div>
+  <div id="cpf-group" style="display:none;">
+    <input type="text" id="cpf" name="cpf" class="input" placeholder="CPF">
+  </div>
+  <input type="submit" value="ENTRAR EM CONTATO">
+</form>
+<script>
+    $(document).ready(function(){
+      // Exibir o campo de CNPJ ou CPF conforme a escolha
+      $('input[name="documento"]').change(function(){
+        var selectedValue = $('input[name="documento"]:checked').val();
+        if(selectedValue === 'cnpj') {
+          $('#cnpj-group').show();
+          $('#cpf-group').hide();
+        } else if(selectedValue === 'cpf') {
+          $('#cpf-group').show();
+          $('#cnpj-group').hide();
+        }
+      });
+    });
+    function formatarTelefone(input) {
+    var cleaned = ('' + input.value).replace(/\D/g, '');
+    var match = cleaned.match(/^(\d{2})(\d{4,5})(\d{4})$/);
+    if (match) {
+      input.value = '(' + match[1] + ') ' + match[2] + '-' + match[3];
+    } else {
+      input.value = cleaned;
+    }
   }
-]
+  document.getElementById('tel').addEventListener('input', function() {
+    formatarTelefone(this);
+  });
+    document.getElementById('cnpj').addEventListener('input', function (e) {
+        var cnpj = e.target.value.replace(/\D/g, ''); // Remove tudo que não for dígito
+        if (cnpj.length > 14) {
+            cnpj = cnpj.slice(0, 14); // Limita a 14 caracteres
+        }
+        if (cnpj.length < 3) {
+            e.target.value = cnpj;
+            return;
+        }
+        cnpj = cnpj.replace(/^(\d{2})(\d)/, '$1.$2'); // Coloca ponto após os primeiros dois dígitos
+        cnpj = cnpj.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3'); // Coloca ponto após os próximos três dígitos
+        cnpj = cnpj.replace(/\.(\d{3})(\d)/, '.$1/$2'); // Coloca barra após os próximos três dígitos
+        cnpj = cnpj.replace(/(\d{4})(\d)/, '$1-$2'); // Coloca hífen após os próximos quatro dígitos
+        e.target.value = cnpj;
+    });
+    document.getElementById('cpf').addEventListener('input', function (e) {
+    var cpf = e.target.value.replace(/\D/g, ''); // Remove tudo que não for dígito
+    if (cpf.length > 11) {
+        cpf = cpf.slice(0, 11); // Limita a 11 caracteres
+    }
+    if (cpf.length < 3) {
+        e.target.value = cpf;
+        return;
+    }
+    cpf = cpf.replace(/^(\d{3})(\d)/, '$1.$2'); // Coloca ponto após os primeiros três dígitos
+    cpf = cpf.replace(/^(\d{3})\.(\d{3})(\d)/, '$1.$2.$3'); // Coloca ponto após os próximos três dígitos
+    cpf = cpf.replace(/\.(\d{3})(\d)/, '.$1-$2'); // Coloca hífen após os próximos três dígitos
+    e.target.value = cpf;
+});
+</script>

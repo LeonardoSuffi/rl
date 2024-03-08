@@ -1,0 +1,67 @@
+<div class="check4">
+    <label>
+        <input type="checkbox" name="aceitar_termos" checked="true" required/>
+        Eu aceito os <a href="#" aria-label="Politica e privacidade" target="_blank">Termos e Condições</a>
+     </label>
+    </div>
+
+<style>
+div a{
+    color: #82a002;
+}
+div label{
+    font-size: 13px;
+}
+.check4 {
+--borderColor: #82a002;
+--borderWidth: 0.1em;
+margin-inline-start: 0.2em;
+}
+.check4 input[type=checkbox] {
+-webkit-appearance: none;
+appearance: none;
+vertical-align: middle;
+background: transparent;
+font-size:25px;
+border-radius: 0.125em;
+display: inline-block;
+border: var(--borderWidth) solid var(--borderColor);
+width: 0.8em;
+vertical-align: -20px;
+aspect-ratio: 1;
+position: relative;
+}
+.check4 input[type=checkbox]:before,
+.check4 input[type=checkbox]:after {
+content: "";
+position: absolute;
+background: var(--borderColor);
+width: calc(var(--borderWidth) * 3);
+height: var(--borderWidth);
+top: 50%;
+left: 15%;
+transform-origin: left center;
+}
+.check4 input[type=checkbox]:before {
+transform: rotate(45deg) translate(calc(var(--borderWidth) / -2), calc(var(--borderWidth) / -2)) scaleX(0);
+transition: transform 200ms ease-in 200ms;
+}
+.check4 input[type=checkbox]:after {
+width: calc(var(--borderWidth) * 5);
+transform: rotate(-45deg) translateY(calc(var(--borderWidth) * 2)) scaleX(0);
+transform-origin: left center;
+transition: transform 200ms ease-in;
+}
+.check4 input[type=checkbox]:checked:before {
+transform: rotate(45deg) translate(calc(var(--borderWidth) / -2), calc(var(--borderWidth) / -2)) scaleX(1);
+transition: transform 200ms ease-in;
+}
+.check4 input[type=checkbox]:checked:after {
+width: calc(var(--borderWidth) * 5);
+transform: rotate(-45deg) translateY(calc(var(--borderWidth) * 2)) scaleX(1);
+transition: transform 200ms ease-out 200ms;
+}
+.check4 input[type=checkbox]:focus {
+outline: calc(var(--borderWidth) / 2) dotted rgba(0, 0, 0, 0.25);
+}
+</style>
