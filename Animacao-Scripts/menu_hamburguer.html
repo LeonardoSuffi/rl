@@ -1,0 +1,68 @@
+<nav>
+    <input type="checkbox" id="menu-toggle" style="display:none;">
+    <label for="menu-toggle" class="menu-icon">&#9776;</label>
+    <ul>
+        <li><a href="https://fazendamaislucrativa.com.br/">Página Inicial</a></li>
+        <li><a href="https://fazendamaislucrativa.com.br/#sobre">Sobre</a></li>
+        <li><a href="https://fazendamaislucrativa.com.br/#servico">Serviços</a></li>
+        <li><a href="tel:+556540420141">Contato</a></li>
+    </ul>
+</nav>
+
+<style>
+    nav {
+    background-color: #253102;
+    padding: 10px 0;
+}
+
+.menu-icon {
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    display: none; /* Oculta o ícone do menu em telas maiores */
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+ul li {
+    display: inline;
+    margin: 30px;
+}
+
+ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+}
+
+ul li a:hover {
+    background-color: #4CAF50;
+}
+
+/* Estilos para dispositivos móveis */
+@media only screen and (max-width: 600px) {
+    .menu-icon {
+        margin-left:15px;
+        display: block; /* Exibe o ícone do menu em telas menores */
+    }
+
+    ul {
+        display: none;
+    }
+
+    ul li {
+        display: block;
+        margin: 10px;
+    }
+
+    input[type="checkbox"]:checked ~ ul {
+        display: block;
+    }
+}
+
+</style>

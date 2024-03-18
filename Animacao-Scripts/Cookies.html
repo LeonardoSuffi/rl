@@ -1,107 +1,103 @@
 <div id="cookie-notice" class="cookie-banner">
-  <p id="texto2">Usamos cookies para que sua experiência seja melhor e ao continuar navegando, você está ciente </p>
-  <br>
+  <p id="texto2">Usamos cookies para que sua experiência seja melhor e ao continuar navegando, você está ciente<br><a href="https://uzicontabilidade.com.br/termos-e-condicoes/" aria-label="Termos e condições" target="_blank" >Termos e condições</a> | <a href="https://uzicontabilidade.com.br/politicas-de-privacidade/" aria-label="Politicas de privacidade" target="_blank">Politicas de privacidade</a></p>
+  <div id="button">
   <button id="cn-accept-cookie" onclick="aceitarCookies()">Aceitar</button>
   <button id="cn-decline-cookie" onclick="recusarCookies()">Recusar</button>
-  </div>
-  <script>
+</div>
+</div>
+<script>
   function aceitarCookies() {
-      // Define um cookie com o nome 'cookie-aceito' e o valor 'true' por 30 dias
-      document.cookie = 'cookie-aceito=true;expires=' + new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toUTCString();
-      // Oculta o aviso de cookie
-      document.getElementById('cookie-notice').style.display = 'none';
-    }
-  
-    function recusarCookies() {
-      // Define um cookie com o nome 'cookie-recusado' e o valor 'true' por 30 dias
-      document.cookie = 'cookie-recusado=true;expires=' + new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toUTCString();
-      // Oculta o aviso de cookie
-      document.getElementById('cookie-notice').style.display = 'none';
-      // Você pode adicionar aqui código adicional para lidar com a recusa de cookies, se necessário
-    }
-  
-    // Verifica se o cookie 'cookie-aceito' existe quando a página é carregada
-    if (document.cookie.indexOf('cookie-aceito=true') > -1) {
-      // Oculta o aviso de cookie
-      document.getElementById('cookie-notice').style.display = 'none';
-    }
-  </script>
-  
-  
+    document.cookie = 'cookie-aceito=true;expires=' + new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toUTCString();
+    document.getElementById('cookie-notice').style.display = 'none';
+  }
+  function recusarCookies() {
+    document.cookie = 'cookie-recusado=true;expires=' + new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toUTCString();
+    document.getElementById('cookie-notice').style.display = 'none';
+  }
+  if (document.cookie.indexOf('cookie-aceito=true') > -1) {
+    document.getElementById('cookie-notice').style.display = 'none';
+  }
+</script>
+
 <style>
   @media (max-width: 580px) {
-      #cookie-notice {
-          width: 100%;
-          padding: 10px 0;
-          height: auto;
-          border-radius: 0;
-          box-shadow: none;
-          bottom: 0;
-          text-align: center;
-          left: 50%;
-          transform: translateX(-50%);
-      }
+    #button{}
+    #cookie-notice {
+      flex-direction: column;
+      align-items: center;
+      width: 98%;
+      padding: 3px 5px;
+      height: auto;
+      border-radius: 0;
+      box-shadow: none;
+      bottom: 0;
+      text-align: start;
+      left: 50%;
+      transform: translateX(-50%);
+    }
 
-      #cookie-notice p {
-          font-size: 12px;
-      }
+    #cookie-notice p {
+      font-size: 12px;
+    }
 
-      #cookie-notice button {
-          font-size: 12px;
-      }
+    #cookie-notice button {
+      font-size: 12px;
+    }
+  }
 
-      #cn-decline-cookie {
-          margin-right: 5px;
-      }
+  #cookie-notice a {
+    font-size: 12px;
+    color: #000;
   }
 
   .cookie-banner {
-      position: fixed;
-      bottom: 10px;
-      width: 850px;
-      height: 50px;
-      background-color: #f1f1f1;
-      padding: 10px;
-      text-align: center;
-      border-radius: 5px;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-      z-index: 9999999999999;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      left: 50%;
-      transform: translateX(-50%);
+    position: fixed;
+    bottom: 5px;
+    width: 850px;
+    height: 50px;
+    background-color: #f1f1f1;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    z-index: 9999999999999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .cookie-banner p {
-      margin: 0;
-      padding: 5px;
+    margin: 0;
+		line-height: 1.5;
+    padding: 5px;
   }
 
   #texto2 {
-      font-size: 15px;
+    font-size: 15px;
   }
 
   .cookie-banner button {
-      background-color: #82a002;
-      color: #fff;
-      padding: 5px 12px;
-      font-weight: 400;
-      border: none;
-      border-radius: 3px;
-      font-size: 14px;
-      cursor: pointer;
+    background-color: #ea7021;
+    color: #fff;
+    padding: 5px 12px;
+    font-weight: 400;
+    border: none;
+    border-radius: 3px;
+    font-size: 14px;
+    cursor: pointer;
   }
 
   #cn-decline-cookie {
-      background-color: #000;
-      color: #fff;
-      margin-left: 10px;
-      padding: 5px 12px;
-      font-weight: 400;
-      border: none;
-      border-radius: 3px;
-      font-size: 14px;
-      cursor: pointer;
+    background-color: #000;
+    color: #fff;
+    margin-left: 10px;
+    padding: 5px 12px;
+    font-weight: 400;
+    border: none;
+    border-radius: 3px;
+    font-size: 14px;
+    cursor: pointer;
   }
 </style>
